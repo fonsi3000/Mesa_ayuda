@@ -16,8 +16,11 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $role1 = Role::create(['name' => 'admin']);
-        $role2 = Role::create(['name' => 'agent']);
-        $role3 = Role::create(['name' => 'user']);
+        $admin = Role::create(['name' => 'admin']);
+        $agent = Role::create(['name' => 'agent']);
+        $user = Role::create(['name' => 'user']);
+
+        Permission::create(['name' => 'dashboard'])->assignRole([$user]);
+        Permission::create(['name' => 'pages-home'])->assignRole([$admin, $agent]);
     }
 }

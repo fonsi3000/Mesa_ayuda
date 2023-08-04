@@ -15,11 +15,14 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Canonical SEO -->
   <link rel="canonical" href="{{ config('variables.productPage') ? config('variables.productPage') : '' }}">
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico') }}" />
+
+  
+  <!-- <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico') }}" /> -->
+  
 
   <!-- Include Styles -->
   @include('layouts/sections/styles')
+  @livewireStyles
 
   <!-- Include Scripts for customizer, helper, analytics, config -->
   @include('layouts/sections/scriptsIncludes')
@@ -34,6 +37,7 @@
 
   <!-- Include Scripts -->
   @include('layouts/sections/scripts')
+  @livewireScripts
 
 </body>
 

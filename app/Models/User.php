@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -60,4 +61,11 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            $user->assignRole('user');
+        });
+    }
 }

@@ -1,9 +1,9 @@
 {
   "menu": [
     {
-      "url": "/",
-      "name": "Home",
-      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "url": "/pages-home",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons bx bxs-dashboard",
       "slug": "pages-home"
     },
     {
@@ -11,6 +11,13 @@
       "icon": "menu-icon tf-icons bx bx-file",
       "name": "Page 2",
       "slug": "pages-page-2"
+    },
+    {
+      "url": "/users",
+      "icon": "menu-icon tf-icons bx bxs-user",
+      "name": "Usuario Registrados",
+      "slug": "users"
     }
   ]
 }
+

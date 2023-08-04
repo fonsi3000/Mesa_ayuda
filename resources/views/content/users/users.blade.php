@@ -4,9 +4,12 @@ $configData = Helper::appClasses();
 
 @extends('layouts/layoutMaster')
 
-@section('title', 'Home')
+@section('title', 'Usuarios')
 
 @section('content')
-<h4>Dashboard admin</h4>
+<h4>Usuarios</h4>
+
+@livewire('users')
+
 
 @endsection

@@ -1,41 +1,57 @@
 <?php
 
+use App\Http\Livewire\Users;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\Http\Controllers\UsersController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// Ruta para mostrar el formulario de inicio de sesión
+Route::get('/', function () {
+    return view('auth.login');
+})->name('login');
 
-$controller_path = 'App\Http\Controllers';
+// Ruta para manejar el inicio de sesión
+Route::post('/', function (Request $request) {
+    $credentials = $request->only('email', 'password');
 
-// Main Page Route
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user();
 
-// pages
+        // Verifica los roles utilizando Spatie Laravel Permission
+        if ($user->hasRole('admin') || $user->hasRole('agent')) {
+            return redirect('pages-home');
+        } elseif ($user->hasRole('user')) {
+            return redirect('dashboard');
+        }
+    }
 
+    return redirect('/')->withErrors(['email' => 'Las credenciales no coinciden con nuestros registros.']);
+})->name('post.login');
 
+// Ruta para manejar el cierre de sesión
+Route::post('/logout', function (Request $request) {
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect('/');
+})->name('logout');
+
+// Rutas para los dashboards
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-$controller_path = 'App\Http\Controllers';
+    Route::get('/pages-home', function () {
+        return view('content.pages.pages-home');
+    })->middleware(['can:pages-home'])->name('pages-home');
 
-    Route::get('/', $controller_path . '\pages\HomePage@index')->name('pages-home');
+    Route::get('/dashboard', function () {
+        return view('content.pages.dashboard');
+    })->middleware(['can:dashboard'])->name('dashboard');
 
-    
+
+    Route::resource('users', UsersController::class)->names('users');
 });
-
-
-
-
-
-
-
- //Route::get('/page-2', $controller_path . '\pages\Page2@index')->name('pages-page-2');

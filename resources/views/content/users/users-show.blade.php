@@ -10,7 +10,7 @@ $configData = Helper::appClasses();
 <div>
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
-          <h5 class="mb-0">Creando Nuevo Usuario</h5> 
+          <h5 class="mb-0">Editando Usuario</h5> 
         </div>
         <div class="card-body">
             <form method="POST" action="{{ route('users.update', $user->id) }}">
@@ -35,6 +35,17 @@ $configData = Helper::appClasses();
                 <label class="form-label" for="basic-default-password">Contraseña nueva</label>
                 <input type="password" name="new_password" id="basic-default-password" class="form-control phone-mask" placeholder="Contraseña" />
             </div>
+            <div class="mb-3">
+              <label class="form-label" for="role">Rol</label>
+              <select class="form-control" id="role" name="role">
+                @foreach($roles as $role)
+                  <option value="{{ $role->name }}" {{ $user->hasRole($role->name) ? 'selected' : '' }}>
+                    {{ $role->name }}
+                  </option>
+                @endforeach
+              </select>
+            </div>
+            
             <button type="submit" class="btn btn-primary">Send</button>
           </form>
         </div>

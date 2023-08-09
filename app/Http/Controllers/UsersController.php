@@ -7,7 +7,7 @@ use App\Http\Livewire\Users;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
+use Spatie\Permission\Models\Role;
 class UsersController extends Controller
 {
     /**
@@ -40,6 +40,13 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = $request->validate(
+            [
+                'name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required',
+            ]
+        );
         $user = new User();
         $user -> name = $request-> name;
         $user -> email = $request-> email;
@@ -57,8 +64,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        $roles = Role::all();
         $user = User::find($id);
-        return view('content.users.users-show',['user'=> $user]);
+        return view('content.users.users-show',['user'=> $user],['roles'=> $roles]);
     }
 
     /**
@@ -69,7 +77,11 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        {
+            $roles = Role::all();
+            $user = User::find($id);
+            return view('content.users.users-show',['user'=> $user],['roles'=> $roles]);
+        }
     }
 
     /**
@@ -87,6 +99,10 @@ class UsersController extends Controller
         if (!empty($request->newPassword)) {
             $user -> password = Hash::make($request->newPassword);
         }
+         // Obtén el nuevo rol del formulario
+          $roleName = $request->input('role');
+        // Elimina todos los roles actuales del usuario y asigna el nuevo rol
+        $user->syncRoles($roleName);
        
         $user -> save();
 

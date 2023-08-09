@@ -11,6 +11,7 @@
          <th>Id</th>
          <th>Nombre</th>
          <th>Email</th>
+         <th>Rol</th>
          <th>Fecha de creacion</th>
          <th>Actions</th>
        </tr>
@@ -22,13 +23,14 @@
                    <td>{{$user->id}}</td>
                    <td>{{$user->name}}</td>
                    <td>{{$user->email}}</td>
+                   <td>{{ $user->getRoleNames()->first() ?? 'N/A' }}</td>
                    <td>{{$user->created_at}}</td>
                    <td>
                      <a href="{{ route('users.show', $user->id )}}">Editar</a> | 
                      <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este usuario?');">
-                         @csrf
-                         @method('DELETE')
-                         <a href="#" onclick="this.closest('form').submit();">Eliminar</a>
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" style="background: none; border: none; color: rgba(82, 124, 236, 0.903); text-decoration: underline; cursor: pointer;">Eliminar</button>
                      </form>
                    </td>
                </tr>

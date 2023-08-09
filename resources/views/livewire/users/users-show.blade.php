@@ -28,6 +28,8 @@
                 <label class="form-label" for="basic-default-password">Contraseña nueva</label>
                 <input type="password" name="new_password" id="basic-default-password" class="form-control phone-mask" placeholder="Contraseña" />
             </div>
+           
+            
             <button type="submit" class="btn btn-primary">Send</button>
           </form>
         </div>

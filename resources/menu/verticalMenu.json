@@ -8,15 +8,21 @@
     },
     {
       "url": "/page-2",
-      "icon": "menu-icon tf-icons bx bx-file",
-      "name": "Page 2",
+      "icon": "menu-icon tf-icons bx bxs-comment-add",
+      "name": "Nuevo ticket",
       "slug": "pages-page-2"
     },
     {
       "url": "/users",
       "icon": "menu-icon tf-icons bx bxs-user",
       "name": "Usuario Registrados",
-      "slug": "users"
+      "slug": "users.index"
+    },
+    {
+      "url": "/categories",
+      "icon": "menu-icon tf-icons bx bxs-category",
+      "name": "Categorias",
+      "slug": "categories.index"
     }
   ]
 }

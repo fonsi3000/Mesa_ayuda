@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\pages\HomePage;
 
 // Ruta para mostrar el formulario de inicio de sesión
 Route::get('/', function () {
@@ -45,9 +46,10 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/pages-home', function () {
-        return view('content.pages.pages-home');
-    })->middleware(['can:pages-home'])->name('pages-home');
+    Route::get('/pages-home', [HomePage::class, 'index'])
+    ->middleware(['can:pages-home'])
+    ->name('pages-home');
+
 
     Route::get('/dashboard', function () {
         return view('content.pages.dashboard');
@@ -56,4 +58,5 @@ Route::middleware([
 
     Route::resource('users', UsersController::class)->names('users');
     Route::resource('categories', CategoriesController::class)->names('categories');
+    Route::resource('tickets', TicketsController::class)->names('tickets');
 });

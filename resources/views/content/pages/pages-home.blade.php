@@ -31,7 +31,7 @@ $configData = Helper::appClasses();
         </div>
       </div>
     </div>
-    <div class="col-xl-3 col-lg-2 col-md-4 col-sm-4 col-6 mb-4">
+    <div class="col-xl-4 col-lg-2 col-md-4 col-sm-4 col-6 mb-4">
       <div class="card">
         <div class="card-body text-center">
           <div class="avatar avatar-md mx-auto mb-3">
@@ -49,7 +49,7 @@ $configData = Helper::appClasses();
             <span class="avatar-initial rounded-circle bg-label-primary"><i class='bx bx-cube fs-3'></i></span>
           </div>
           <span class="d-block mb-1 text-nowrap">Usuarios</span>
-          <h2 class="mb-0">72</h2>
+          <h2 class="mb-0">{{$n_users}}</h2>
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@ $configData = Helper::appClasses();
             <span class="avatar-initial rounded-circle bg-label-success"><i class='bx bx-purchase-tag fs-3'></i></span>
           </div>
           <span class="d-block mb-1 text-nowrap">Categorias</span>
-          <h2 class="mb-0">65</h2>
+          <h2 class="mb-0">{{$n_categories}}</h2>
         </div>
       </div>
     </div>

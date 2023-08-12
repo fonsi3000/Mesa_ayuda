@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\pages\HomePage;
+use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\UserDashboarController;
 
 // Ruta para mostrar el formulario de inicio de sesión
 Route::get('/', function () {
@@ -23,7 +25,8 @@ Route::post('/', function (Request $request) {
 
         // Verifica los roles utilizando Spatie Laravel Permission
         if ($user->hasRole('admin') || $user->hasRole('agent')) {
-            return redirect('pages-home');
+            // Redirige a tickets.index cuando sea admin o agent
+            return redirect()->route('tickets.index');
         } elseif ($user->hasRole('user')) {
             return redirect('dashboard');
         }
@@ -42,21 +45,25 @@ Route::post('/logout', function (Request $request) {
 
 // Rutas para los dashboards
 Route::middleware([
-    'auth:sanctum',
+    'auth:sanctum',  
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/pages-home', [HomePage::class, 'index'])
-    ->middleware(['can:pages-home'])
-    ->name('pages-home');
-
 
     Route::get('/dashboard', function () {
+
         return view('content.pages.dashboard');
-    })->middleware(['can:dashboard'])->name('dashboard');
+    })->name('dashboard')->middleware('can:dashboard');
+    
 
 
     Route::resource('users', UsersController::class)->names('users');
     Route::resource('categories', CategoriesController::class)->names('categories');
-    Route::resource('tickets', TicketsController::class)->names('tickets');
+    // Las otras rutas del recurso ticket se mantienen sin cambios
+    Route::resource('tickets', TicketsController::class)->except(['index'])->names('tickets');
+
+    // La ruta tickets.index con el middleware de autorización
+    Route::get('/tickets', [TicketsController::class, 'index'])->name('tickets.index')->middleware('can:tickets.index');
+    Route::get('/mis.tickets', [TicketsController::class, 'index2'])->name('mis.tickets');
+
 });

@@ -1,27 +1,39 @@
 {
   "menu": [
     {
-      "url": "/pages-home",
-      "name": "Dashboard",
+      "url": "/tickets",
+      "name": "Dashboard- admin-agent",
       "icon": "menu-icon tf-icons bx bxs-dashboard",
-      "slug": "pages-home"
+      "slug": "tickets.index"
     },
     {
-      "url": "/page-2",
+      "url": "/dashboard",
+      "icon": "menu-icon tf-icons bx bxs-dashboard",
+      "name": "Dashboard-user",
+      "slug": "dashboard"
+    },
+    {
+      "url": "/tickets/create",
       "icon": "menu-icon tf-icons bx bxs-comment-add",
-      "name": "Nuevo ticket",
-      "slug": "pages-page-2"
+      "name": "Nuevo Ticket-user",
+      "slug": "tickets.create"
+    },
+    {
+      "url": "/mis.tickets",
+      "icon": "menu-icon tf-icons bx bxs-chat",
+      "name": "Mis Tickets-user",
+      "slug": "mis.tickets"
     },
     {
       "url": "/users",
       "icon": "menu-icon tf-icons bx bxs-user",
-      "name": "Usuario Registrados",
+      "name": "Usuario Registrados admin-agent",
       "slug": "users.index"
     },
     {
       "url": "/categories",
       "icon": "menu-icon tf-icons bx bxs-category",
-      "name": "Categorias",
+      "name": "Categorias- admin-agent",
       "slug": "categories.index"
     }
   ]

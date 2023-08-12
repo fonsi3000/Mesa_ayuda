@@ -21,6 +21,6 @@ class RoleSeeder extends Seeder
         $user = Role::create(['name' => 'user']);
 
         Permission::create(['name' => 'dashboard'])->assignRole([$user]);
-        Permission::create(['name' => 'pages-home'])->assignRole([$admin, $agent]);
+        Permission::create(['name' => 'tickets.index'])->assignRole([$admin, $agent]);
     }
 }

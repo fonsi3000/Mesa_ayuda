@@ -20,11 +20,17 @@ $configData = Helper::appClasses();
             <div class="mb-3">
               <label class="form-label" for="basic-default-fullname">Numero de Cedula de ciudadania</label>
               <input type="int" name="cedula" required class="form-control" id="basic-default-fullname" placeholder="N° de cedula" />
+              @error('cedula')
+                  <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname">Numero de telefono o Whatsapp</label>
                 <input type="int" name="contacto" required class="form-control" id="basic-default-fullname" placeholder="3108569546" />
+                @error('contacto')
+                  <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
               </div>
             
               <div class="mb-3">

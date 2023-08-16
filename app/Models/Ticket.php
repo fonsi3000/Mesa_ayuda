@@ -18,7 +18,9 @@ class Ticket extends Model
         'titulo',
         'descripcion',
         'documento_1',
-        'documento_2'
+        'documento_2',
+        'agent_asignado',  
+        'respuesta',
     ];
 
     // Relación con el modelo User (suponiendo que tienes un modelo User)
@@ -32,4 +34,9 @@ class Ticket extends Model
     {
         return $this->belongsTo(Categories::class);
     }
+    public function agentAsignado()
+    {
+        return $this->belongsTo(User::class, 'agent_asignado');
+    }
+   
 }

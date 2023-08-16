@@ -23,6 +23,8 @@ return new class extends Migration
             $table->text('descripcion');  // Descripción del ticket
             $table->string('documento_1')->nullable();  // Archivo de documento 1
             $table->string('documento_2')->nullable();  // Archivo de documento 2
+            $table->unsignedBigInteger('agent_asignado')->nullable();
+            $table->text('respuesta')->nullable();
             $table->timestamps();  // Campos created_at y updated_at
         });
     }

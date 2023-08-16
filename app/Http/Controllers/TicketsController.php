@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Categories;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\TicketsAsignadosController;
 
 class TicketsController extends Controller
 {
@@ -24,6 +25,7 @@ class TicketsController extends Controller
         $n_tickets = Ticket::count();
 
         $tickets = Ticket::all();
+        
         return view('content.tickets.tickets', ['ticket'=> $tickets],['n_users' => $n_users, 'n_categories' => $n_categories,'n_tickets' => $n_tickets]);
     
         return view('content.tickets.mistickets', ['ticket'=> $tickets]);
@@ -35,7 +37,46 @@ class TicketsController extends Controller
     
         return view('content.tickets.mistickets', ['ticket'=> $tickets]);
     }
-    
+
+    public function ticket_asignado()
+    {
+        $userId = Auth::id(); // Obtener el ID del usuario autenticado
+        $userRoles = Auth::user()->roles->pluck('name')->toArray(); // Obtener los roles del usuario
+
+        $ticket = Ticket::where(function ($query) use ($userId, $userRoles) {
+        $query->where('user_id', $userId)
+              ->orWhere('agent_asignado', $userId);
+
+        // Verificar si el usuario tiene el rol 'admin'
+        if (in_array('admin', $userRoles)) {
+            $query->orWhereNotNull('agent_asignado');
+        }
+    })->whereNotNull('agent_asignado') // Filtrar solo los tickets asignados
+      ->get();
+
+    return view('content.tickets.tickets_asignados', ['ticket' => $ticket]);
+    }
+
+    public function ticket_resueltos()
+    {
+        $userId = Auth::id(); // Obtener el ID del usuario autenticado
+        $userRoles = Auth::user()->roles->pluck('name')->toArray(); // Obtener los roles del usuario
+
+        $ticket = Ticket::where(function ($query) use ($userId, $userRoles) {
+        $query->where('user_id', $userId)
+              ->orWhere('agent_asignado', $userId);
+
+        // Verificar si el usuario tiene el rol 'admin'
+        if (in_array('admin', $userRoles)) {
+            $query->orWhereNotNull('agent_asignado');
+        }
+    })->whereNotNull('agent_asignado') // Filtrar solo los tickets asignados
+      ->get();
+
+        return view('content.tickets.tickets_resueltos', ['ticket' => $ticket]);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -55,16 +96,21 @@ class TicketsController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'cedula.numeric' => 'El campo cedula solo puede contener números.',
+            'contacto.numeric' => 'El campo contacto solo puede contener números.',
+            // Otros mensajes de error aquí
+        ];
         $validator = $request->validate(
             [
-                'cedula' => 'required',
-                'contacto' => 'required',
+                'cedula' => 'required|numeric',
+                'contacto' => 'required|numeric',
                 'category_id' => 'required',
                 'titulo' => 'required',
                 'descripcion' => 'required',
-                'documento_1' => 'required',
-            ]
-        );
+                
+            ],$messages);
+        
         $ticket = new Ticket();
         $ticket -> cedula = $request-> cedula;
         $ticket -> contacto = $request-> contacto;
@@ -77,7 +123,7 @@ class TicketsController extends Controller
         $ticket -> save();
 
         if (Auth::user()->hasRole('user')) {
-            return redirect()->route('dashboard');
+            return redirect()->route('mis.tickets');
         } elseif (Auth::user()->hasRole('admin') || Auth::user()->hasRole('agent')) {
             return redirect()->route('tickets.index');
         }
@@ -92,9 +138,10 @@ class TicketsController extends Controller
     public function show($id)
     {
         $ticket = Ticket::find($id);
+        $users = User::all();
 
         
-        return view('content.tickets.tickets-show',['ticket'=> $ticket]);
+        return view('content.tickets.tickets-show',['ticket'=> $ticket, 'users' => $users]);
     }
 
     /**
@@ -115,10 +162,26 @@ class TicketsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function update(Request $request, Ticket $ticket)
+{
+    $request->validate([
+        // ... (otras validaciones)
+        'agent_asignado' => 'nullable|exists:users,id',
+        
+        // ... (otras validaciones)
+    ]);
+
+    $ticket->update([
+        // ... (otros campos)
+        'agent_asignado' => $request->agent_asignado,
+        'respuesta' => $request->respuesta,
+        // ... (otros campos)
+    ]);
+
+    return redirect()->route('tickets.index', $ticket->id)
+        ->with('success', 'Ticket actualizado correctamente.');
+}
+
 
     /**
      * Remove the specified resource from storage.
@@ -126,8 +189,10 @@ class TicketsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ticket)
     {
-        //
+        $ticket = Ticket::find($ticket);
+        $ticket->delete();
+        return redirect()->route('tickets.index');
     }
 }

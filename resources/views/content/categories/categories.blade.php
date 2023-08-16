@@ -36,7 +36,7 @@ $configData = Helper::appClasses();
                         @csrf
                         @method('DELETE')
                         <button type="submit" style="background: none; border: none; color: rgba(82, 124, 236, 0.903); text-decoration: underline; cursor: pointer;">Eliminar</button>
-                    </form>
+                      </form>
                     
                      </td>
                  </tr>

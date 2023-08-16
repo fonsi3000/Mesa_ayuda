@@ -50,6 +50,7 @@ Route::middleware([
     'verified'
 ])->group(function () {
 
+
     Route::get('/dashboard', function () {
 
         return view('content.pages.dashboard');
@@ -62,8 +63,15 @@ Route::middleware([
     // Las otras rutas del recurso ticket se mantienen sin cambios
     Route::resource('tickets', TicketsController::class)->except(['index'])->names('tickets');
 
-    // La ruta tickets.index con el middleware de autorización
     Route::get('/tickets', [TicketsController::class, 'index'])->name('tickets.index')->middleware('can:tickets.index');
+    // La ruta tickets.index con el middleware de autorización
+    
     Route::get('/mis.tickets', [TicketsController::class, 'index2'])->name('mis.tickets');
+
+    Route::get('/ticket_asignado', [TicketsController::class, 'ticket_asignado'])->name('ticket_asignado');
+
+    Route::get('/ticket_resueltos', [TicketsController::class, 'ticket_resueltos'])->name('ticket_resueltos');
+
+    
 
 });

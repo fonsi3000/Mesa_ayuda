@@ -27,60 +27,95 @@ $configData = Helper::appClasses();
 
   <div class="menu-inner-shadow"></div>
 
-  <ul class="menu-inner py-1">
-    @foreach ($menuData[0]->menu as $menu)
+  
 
-    {{-- adding active and open class if child is active --}}
 
-    {{-- menu headers --}}
-    @if (isset($menu->menuHeader))
-    <li class="menu-header small text-uppercase">
-      <span class="menu-header-text">{{ $menu->menuHeader }}</span>
+<ul class="menu-inner py-1 ps ps--active-y">
+    @can('dashboard')
+    <li class="menu-item {{ Request::is('dashboard*') ? 'active' : '' }}">
+        <a href="{{ route('dashboard') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bxs-dashboard"></i>
+            <div>Dashboard</div>
+        </a>
     </li>
+    @endcan
 
-    @else
+    @can('tickets.index')
+    <li class="menu-item {{ Request::is('tickets*') ? 'active' : '' }}">
+        <a href="{{ route('tickets.index') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bxs-dashboard"></i>
+            <div>Dashboard</div>
+        </a>
+    </li>
+    @endcan
 
-    {{-- active menu method --}}
-    @php
-    $activeClass = null;
-    $currentRouteName = Route::currentRouteName();
-
-    if ($currentRouteName === $menu->slug) {
-    $activeClass = 'active';
-    }
-    elseif (isset($menu->submenu)) {
-    if (gettype($menu->slug) === 'array') {
-    foreach($menu->slug as $slug){
-    if (str_contains($currentRouteName,$slug) and strpos($currentRouteName,$slug) === 0) {
-    $activeClass = 'active open';
-    }
-    }
-    }
-    else{
-    if (str_contains($currentRouteName,$menu->slug) and strpos($currentRouteName,$menu->slug) === 0) {
-    $activeClass = 'active open';
-    }
-    }
-
-    }
-    @endphp
-
-    {{-- main menu --}}
-    <li class="menu-item {{$activeClass}}">
-      <a href="{{ isset($menu->url) ? url($menu->url) : 'javascript:void(0);' }}" class="{{ isset($menu->submenu) ? 'menu-link menu-toggle' : 'menu-link' }}" @if (isset($menu->target) and !empty($menu->target)) target="_blank" @endif>
-        @isset($menu->icon)
-        <i class="{{ $menu->icon }}"></i>
-        @endisset
-        <div>{{ isset($menu->name) ? __($menu->name) : '' }}</div>
+    @can('dashboard')
+    <li class="menu-item {{ Request::is('tickets/create*') ? 'active' : '' }}">
+      <a href="{{ route('tickets.create') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bxs-comment-add"></i>
+          <div>Nuevo Ticket</div>
       </a>
-
-      {{-- submenu --}}
-      @isset($menu->submenu)
-      @include('layouts.sections.menu.submenu',['menu' => $menu->submenu])
-      @endisset
     </li>
-    @endif
-    @endforeach
-  </ul>
+    @endcan
+    
+    @can('dashboard')
+    <li class="menu-item {{ Request::is('mis.tickets*','tickets.show') ? 'active' : '' }}">
+      <a href="{{ route('mis.tickets') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bxs-chat"></i>
+          <div>Mis Tickets</div>
+      </a>
+    </li>
+    @endcan
+
+    @can('tickets.index')
+    <li class="menu-item {{ Request::is('ticket_asignado') ? 'active' : '' }}">
+        <a href="{{ route('ticket_asignado') }}" class="menu-link">
+            <i class='menu-icon tf-icons bx bxs-message-alt-error'></i>
+            <div>
+                @if(Auth::user()->hasRole('admin'))
+                    Tickets Asignados
+                @elseif(Auth::user()->hasRole('agent'))
+                    Mis Tickets Asignados
+                @endif
+            </div>
+        </a>
+    </li>
+    @endcan
+    
+    @can('tickets.index')
+    <li class="menu-item {{ Request::is('ticket_resueltos') ? 'active' : '' }}">
+        <a href="{{ route('ticket_resueltos') }}" class="menu-link">
+            <i class='menu-icon tf-icons bx bxs-message-check'></i>
+            <div>
+                @if(Auth::user()->hasRole('admin'))
+                Tickets Resueltos
+                @elseif(Auth::user()->hasRole('agent'))
+                    Mis Tickets Resueltos
+                @endif
+            </div>
+        </a>
+    </li>
+    @endcan
+
+    @can('tickets.index')
+    <li class="menu-item {{ Request::is('users*') ? 'active' : '' }}">
+        <a href="{{ route('users.index') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bxs-user"></i>
+            <div>Usuarios Registrados</div>
+        </a>
+    </li>
+    @endcan
+
+    @can('tickets.index')
+    <li class="menu-item {{ Request::is('categories*') ? 'active' : '' }}">
+        <a href="{{ route('categories.index') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bxs-category"></i>
+            <div>Categorias</div>
+        </a>
+    </li>
+    @endcan
+</ul>
+
+
 
 </aside>

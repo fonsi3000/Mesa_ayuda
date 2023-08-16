@@ -88,6 +88,7 @@ $configData = Helper::appClasses();
             </thead>
             <tbody class="table-border-bottom-0">
                 @foreach ($ticket as $ticket)
+                @if ($ticket->respuesta === null && $ticket->agent_asignado === null)
                 <tr>
                     <td>{{$ticket->id}}</td>
                     <td>{{$ticket->cedula}}</td>
@@ -95,15 +96,9 @@ $configData = Helper::appClasses();
                     <td>{{$ticket->category->name}}</td>
                     <td>{{$ticket->titulo}}</td>
                     <td>{{$ticket->created_at}}</td>
-                    <td>
-                      <a href="{{ route('tickets.show', $ticket->id )}}">Ver Ticket</a> | 
-                      <form action="#" method="POST" style="display: inline;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este usuario?');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" style="background: none; border: none; color: rgba(82, 124, 236, 0.903); text-decoration: none; cursor: pointer;">Eliminar</button>
-                      </form>
-                    </td>
+                    <td><a href="{{ route('tickets.show', $ticket->id )}}">Ver Ticket</a></td>
                 </tr>
+                @endif
               @endforeach
             </tbody>
           </table>

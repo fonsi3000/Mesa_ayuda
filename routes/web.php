@@ -58,15 +58,15 @@ Route::middleware([
     
 
 
-    Route::resource('users', UsersController::class)->names('users');
-    Route::resource('categories', CategoriesController::class)->names('categories');
+    Route::resource('users', UsersController::class)->names('users')->middleware('can:tickets.index');
+    Route::resource('categories', CategoriesController::class)->names('categories')->middleware('can:tickets.index');
     // Las otras rutas del recurso ticket se mantienen sin cambios
     Route::resource('tickets', TicketsController::class)->except(['index'])->names('tickets');
 
     Route::get('/tickets', [TicketsController::class, 'index'])->name('tickets.index')->middleware('can:tickets.index');
     // La ruta tickets.index con el middleware de autorización
     
-    Route::get('/mis.tickets', [TicketsController::class, 'index2'])->name('mis.tickets');
+    Route::get('/mis.tickets', [TicketsController::class, 'index2'])->name('mis.tickets')->middleware('can:dashboard');
 
     Route::get('/ticket_asignado', [TicketsController::class, 'ticket_asignado'])->name('ticket_asignado');
 

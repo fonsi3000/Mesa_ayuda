@@ -41,7 +41,7 @@ $configData = Helper::appClasses();
                 @foreach($roles as $role)
                   <option value="{{ $role->name }}" {{ $user->hasRole($role->name) ? 'selected' : '' }}>
                     {{ $role->name }}
-                  </option>
+                  </option> 
                 @endforeach
               </select>
             </div>

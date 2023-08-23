@@ -2,7 +2,7 @@
   // Variables
   return [
     "creatorName" => "LUIS CARRASCAL",
-    "creatorUrl" => "https://me.elrincondeisma.com/",
+    "creatorUrl" => "",
     "templateName" => "Parque Soft",
     "templateSuffix" => "",
     "templateVersion" => "1.0.0",

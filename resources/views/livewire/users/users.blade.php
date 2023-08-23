@@ -26,12 +26,15 @@
                    <td>{{ $user->getRoleNames()->first() ?? 'N/A' }}</td>
                    <td>{{$user->created_at}}</td>
                    <td>
-                     <a href="{{ route('users.show', $user->id )}}">Editar</a> | 
+                     <a href="{{ route('users.show', $user->id )}}">Editar</a>
+                     @can('admin')
+                     | 
                      <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este usuario?');">
                       @csrf
                       @method('DELETE')
                       <button type="submit" style="background: none; border: none; color: rgba(82, 124, 236, 0.903); text-decoration: underline; cursor: pointer;">Eliminar</button>
                      </form>
+                    @endcan  
                    </td>
                </tr>
             @endforeach

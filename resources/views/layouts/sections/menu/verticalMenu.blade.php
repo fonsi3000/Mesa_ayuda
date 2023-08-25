@@ -7,11 +7,10 @@ $configData = Helper::appClasses();
   <!-- ! Hide app brand if navbar-full -->
   @if(!isset($navbarFull))
   <div class="app-brand demo">
+  <img src="https://parquesoft.com/wp-content/uploads/2020/05/PS-Sucrea.png" width="auto" height="50" alt="Descripción de la imagen">
     <a href="{{url('/pages-home')}}" class="app-brand-link">
-     
       <span class="app-brand-text demo menu-text fw-bold ms-2">{{config('variables.templateName')}}</span>
     </a>
-
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
       <i class="bx menu-toggle-icon d-none d-xl-block fs-4 align-middle"></i>
       <i class="bx bx-x d-block d-xl-none bx-sm align-middle"></i>
@@ -27,15 +26,12 @@ $configData = Helper::appClasses();
 
   <div class="menu-inner-shadow"></div>
 
-  
-
-
 <ul class="menu-inner py-1 ps ps--active-y">
     @can('dashboard')
     <li class="menu-item {{ Request::is('dashboard*') ? 'active' : '' }}">
         <a href="{{ route('dashboard') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bxs-dashboard"></i>
-            <div>Dashboard</div>
+            <div>Panel Admistración</div>
         </a>
     </li>
     @endcan
@@ -44,7 +40,7 @@ $configData = Helper::appClasses();
     <li class="menu-item {{ Request::is('tickets*') ? 'active' : '' }}">
         <a href="{{ route('tickets.index') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bxs-dashboard"></i>
-            <div>Dashboard</div>
+            <div>Panel Administración</div>
         </a>
     </li>
     @endcan
@@ -57,7 +53,7 @@ $configData = Helper::appClasses();
       </a>
     </li>
     @endcan
-    
+
     @can('dashboard')
     <li class="menu-item {{ Request::is('mis.tickets*','tickets.show') ? 'active' : '' }}">
       <a href="{{ route('mis.tickets') }}" class="menu-link">
@@ -81,7 +77,7 @@ $configData = Helper::appClasses();
         </a>
     </li>
     @endcan
-    
+
     @can('tickets.index')
     <li class="menu-item {{ Request::is('ticket_resueltos') ? 'active' : '' }}">
         <a href="{{ route('ticket_resueltos') }}" class="menu-link">

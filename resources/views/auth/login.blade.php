@@ -5,7 +5,7 @@ $customizerHidden = 'customizer-hide';
 
 @extends('layouts/blankLayout')
 
-@section('title', 'Login')
+@section('title', 'Inicio')
 
 @section('page-style')
 {{-- Page Css files --}}
@@ -19,12 +19,53 @@ $customizerHidden = 'customizer-hide';
     <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center">
       <div class="flex-row text-center mx-auto">
         {{-- <img src="{{asset('assets/img/pages/login-'.$configData['style'].'.png')}}" alt="Auth Cover Bg color" width="520" class="img-fluid authentication-cover-img" data-app-light-img="pages/login-light.png" data-app-dark-img="pages/login-dark.png"> --}}
-        <div class="mx-auto">
-          <h3>Discover the powerful admin template 🥳</h3>
-          <p>
-            Perfectly suited for all level of developers which helps you to <br> kick start your next big projects & Applications.
-          </p>
+        <!-- INICIO CARROUSEL -->
+        <div class="container">
+    <h2>Carrusel de Imágenes (Automático)</h2>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicadores -->
+        <ul class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ul>
+
+        <!-- Imágenes -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="imagen1.jpg" alt="Imagen 1">
+            </div>
+            <div class="carousel-item">
+                <img src="imagen2.jpg" alt="Imagen 2">
+            </div>
+            <div class="carousel-item">
+                <img src="imagen3.jpg" alt="Imagen 3">
+            </div>
         </div>
+
+        <!-- Controles -->
+        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Iniciar el carrusel automáticamente cada 2 segundos
+    $(document).ready(function(){
+        $('.carousel').carousel({
+            interval: 2000 // Cambiar cada 2 segundos
+        });
+    });
+</script>
+        <!-- FIN CARROUSEL -->
       </div>
     </div>
     <!-- /Left Text -->
@@ -35,12 +76,27 @@ $customizerHidden = 'customizer-hide';
         <!-- Logo -->
         <div class="app-brand justify-content-center mb-4">
           <a href="{{url('/')}}" class="app-brand-link gap-2 mb-2">
-            <span class="app-brand-text demo h3 mb-0 fw-bold">{{config('variables.templateName')}}</span>
+
           </a>
         </div>
         <!-- /Logo -->
-        <h4 class="mb-2">Welcome to {{config('variables.templateName')}}! 👋</h4>
-        <p class="mb-4">Please sign-in to your account and start the adventure</p>
+        <head>
+
+          <style>
+              .center {
+                  display: block;
+                  margin: 0 auto;
+              }
+          </style>
+      </head>
+      <body>
+      <!-- Imagen Centrada -->
+      <img src="https://parquesoft.com/wp-content/uploads/2020/05/PS-Sucrea.png" width="auto" height=70 alt="Imagen centrada" class="center">
+
+      <br>
+
+        <h4 class="mb-2">Bienvenido. 👋</h4>
+        <p class="mb-4">Inicia sesión en tu cuenta y comienza la aventura.
 
         @if (session('status'))
         <div class="alert alert-success mb-1 rounded-0" role="alert">
@@ -63,10 +119,10 @@ $customizerHidden = 'customizer-hide';
           </div>
           <div class="mb-3 form-password-toggle">
             <div class="d-flex justify-content-between">
-              <label class="form-label" for="login-password">Password</label>
+              <label class="form-label" for="login-password">Contraseña</label>
               @if (Route::has('password.request'))
               <a href="{{ route('password.request') }}">
-                <small>Forgot Password?</small>
+                <small>¿Olvido su contraseña?</small>
               </a>
               @endif
             </div>
@@ -84,24 +140,24 @@ $customizerHidden = 'customizer-hide';
             <div class="form-check">
               <input class="form-check-input" type="checkbox" id="remember-me" name="remember" {{ old('remember') ? 'checked' : '' }}>
               <label class="form-check-label" for="remember-me">
-                Remember Me
+                Recordarme
               </label>
             </div>
           </div>
-          <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+          <button class="btn btn-primary d-grid w-100" type="submit">Iniciar sesión</button>
         </form>
 
         <p class="text-center">
-          <span>New on our platform?</span>
+          <span>¿Nuevo en nuestra plataforma?</span>
           @if (Route::has('register'))
           <a href="{{ route('register') }}">
-            <span>Create an account</span>
+            <span>Crear una cuenta</span>
           </a>
           @endif
         </p>
 
         <div class="divider my-4">
-          <div class="divider-text">or</div>
+          <div class="divider-text">o</div>
         </div>
 
         <div class="d-flex justify-content-center">

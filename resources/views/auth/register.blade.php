@@ -34,21 +34,18 @@ $customizerHidden = 'customizer-hide';
       <div class="w-px-400 mx-auto">
         <!-- Logo -->
         <div class="app-brand mb-4">
-          <a href="{{url('/')}}" class="app-brand-link gap-2 mb-2">
-            <span class="app-brand-logo demo">@include('_partials.macros')</span>
-            <span class="app-brand-text demo h3 mb-0 fw-bold">{{config('variables.templateName')}}</span>
-          </a>
+          <img src="https://parquesoft.com/wp-content/uploads/2020/05/PS-Sucrea.png" width="auto" height=70 alt="Imagen centrada" class="center">
         </div>
         <!-- /Logo -->
 
         <!-- Register Card -->
-        <h4 class="mb-2">Adventure starts here 🚀</h4>
-        <p class="mb-4">Make your app management easy and fun!</p>
+        <h4 class="mb-2">Crea una cuenta 🚀</h4>
+        
 
         <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" method="POST">
           @csrf
           <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
+            <label for="username" class="form-label">Nombre Completo</label>
             <input type="text" class="form-control @error('name') is-invalid @enderror" id="username" name="name" placeholder="johndoe" autofocus value="{{ old('name') }}" />
             @error('name')
             <span class="invalid-feedback" role="alert">
@@ -57,7 +54,7 @@ $customizerHidden = 'customizer-hide';
             @enderror
           </div>
           <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
+            <label for="email" class="form-label">Correo electronico</label>
             <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="john@example.com" value="{{ old('email') }}" />
             @error('email')
             <span class="invalid-feedback" role="alert">
@@ -66,7 +63,7 @@ $customizerHidden = 'customizer-hide';
             @enderror
           </div>
           <div class="mb-3 form-password-toggle">
-            <label class="form-label" for="password">Password</label>
+            <label class="form-label" for="password">Contraseña</label>
             <div class="input-group input-group-merge @error('password') is-invalid @enderror">
               <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
               <span class="input-group-text cursor-pointer">
@@ -81,7 +78,7 @@ $customizerHidden = 'customizer-hide';
           </div>
 
           <div class="mb-3 form-password-toggle">
-            <label class="form-label" for="password-confirm">Confirm Password</label>
+            <label class="form-label" for="password-confirm">Confirmar Contraseña</label>
             <div class="input-group input-group-merge">
               <input type="password" id="password-confirm" class="form-control" name="password_confirmation" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
               <span class="input-group-text cursor-pointer">
@@ -109,10 +106,10 @@ $customizerHidden = 'customizer-hide';
         </form>
 
         <p class="text-center mt-2">
-          <span>Already have an account?</span>
+          <span>¿Ya tienes una cuenta?</span>
           @if (Route::has('login'))
           <a href="{{ route('login') }}">
-            <span>Sign in instead</span>
+            <span>Inicia sesión en su lugar</span>
           </a>
           @endif
         </p>

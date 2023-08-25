@@ -21,7 +21,7 @@ $customizerHidden = 'customizer-hide';
         {{-- <img src="{{asset('assets/img/pages/login-'.$configData['style'].'.png')}}" alt="Auth Cover Bg color" width="520" class="img-fluid authentication-cover-img" data-app-light-img="pages/login-light.png" data-app-dark-img="pages/login-dark.png"> --}}
         <!-- INICIO CARROUSEL -->
         <div class="container">
-    <h2>Carrusel de Imágenes (Automático)</h2>
+    
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicadores -->
         <ul class="carousel-indicators">
@@ -33,14 +33,24 @@ $customizerHidden = 'customizer-hide';
         <!-- Imágenes -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="imagen1.jpg" alt="Imagen 1">
+                <img src="public\assets\img\pages\img1.png" alt="Imagen 1">
             </div>
             <div class="carousel-item">
-                <img src="imagen2.jpg" alt="Imagen 2">
+                <img src="public\assets\img\pages\img2.png" alt="Imagen 2">
             </div>
             <div class="carousel-item">
-                <img src="imagen3.jpg" alt="Imagen 3">
+                <img src="public\assets\img\pages\img3.png" alt="Imagen 3">
             </div>
+
+            <script>
+              // Iniciar el carrusel automáticamente cada 2 segundos
+              $(document).ready(function(){
+                  $('.carousel').carousel({
+                      interval: 2000 // Cambiar cada 2 segundos
+                  });
+              });
+          </script>
+            
         </div>
 
         <!-- Controles -->
@@ -57,14 +67,7 @@ $customizerHidden = 'customizer-hide';
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script>
-    // Iniciar el carrusel automáticamente cada 2 segundos
-    $(document).ready(function(){
-        $('.carousel').carousel({
-            interval: 2000 // Cambiar cada 2 segundos
-        });
-    });
-</script>
+
         <!-- FIN CARROUSEL -->
       </div>
     </div>

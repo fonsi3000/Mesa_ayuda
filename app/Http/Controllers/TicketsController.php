@@ -26,7 +26,7 @@ class TicketsController extends Controller
 
         $tickets = Ticket::all();
         
-        return view('content.tickets.tickets', ['ticket'=> $tickets],['n_users' => $n_users, 'n_categories' => $n_categories,'n_tickets' => $n_tickets]);
+        return view('content.tickets.tickets', ['ticket'=> $tickets,'n_users' => $n_users, 'n_categories' => $n_categories,'n_tickets' => $n_tickets]);
     
         return view('content.tickets.mistickets', ['ticket'=> $tickets]);
     }

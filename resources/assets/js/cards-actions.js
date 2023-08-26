@@ -73,7 +73,7 @@
 
   // Sortable.js (Drag & Drop cards)
   // --------------------------------------------------------------------
-  if (typeof cardDnD !== undefined && cardDnD !== null) {
+  if (typeof cardDnD !== "undefined" && cardDnD !== null) {
     Sortable.create(cardDnD, {
       animation: 500,
       handle: '.card'

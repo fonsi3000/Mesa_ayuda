@@ -42,19 +42,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
     // Expiry Date Mask
     if (expiryDateMask) {
-      new Cleave(expiryDateMask, {
-        date: true,
-        delimiter: '/',
-        datePattern: ['m', 'y']
-      });
+      
     }
 
     // CVV
     if (cvvMask.length) {
-      new Cleave(cvvMask, {
-        numeral: true,
-        numeralPositiveOnly: true
-      });
+      
     }
 
     // Credit card form validation

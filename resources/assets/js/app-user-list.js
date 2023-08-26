@@ -452,10 +452,7 @@ $(function () {
   // Phone Number
   if (phoneMaskList) {
     phoneMaskList.forEach(function (phoneMask) {
-      new Cleave(phoneMask, {
-        phone: true,
-        phoneRegionCode: 'US'
-      });
+      
     });
   }
   // Add New User Form Validation

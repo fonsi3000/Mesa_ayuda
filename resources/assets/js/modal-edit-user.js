@@ -28,19 +28,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
     // Prefix
     if (modalEditUserTaxID) {
-      new Cleave(modalEditUserTaxID, {
-        prefix: 'TIN',
-        blocks: [3, 3, 3, 4],
-        uppercase: true
-      });
+     
     }
 
     // Phone Number Input Mask
     if (modalEditUserPhone) {
-      new Cleave(modalEditUserPhone, {
-        phone: true,
-        phoneRegionCode: 'US'
-      });
+      
     }
 
     // Edit user form validation

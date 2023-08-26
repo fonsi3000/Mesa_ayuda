@@ -12,34 +12,17 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
     // Credit Card
     if (creditCardMask) {
-      new Cleave(creditCardMask, {
-        creditCard: true,
-        onCreditCardTypeChanged: function (type) {
-          if (type != '' && type != 'unknown') {
-            document.querySelector('.card-type').innerHTML =
-              '<img src="' + assetsPath + 'img/icons/payments/' + type + '-cc.png" height="28"/>';
-          } else {
-            document.querySelector('.card-type').innerHTML = '';
-          }
-        }
-      });
+      
     }
 
     // Expiry Date Mask
     if (expiryDateMask) {
-      new Cleave(expiryDateMask, {
-        date: true,
-        delimiter: '/',
-        datePattern: ['m', 'y']
-      });
+      
     }
 
     // CVV Mask
     if (CVVMask) {
-      new Cleave(CVVMask, {
-        numeral: true,
-        numeralPositiveOnly: true
-      });
+      
     }
 
     const formAccSettings = document.getElementById('formAccountSettings'),
@@ -161,18 +144,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
     // Phone Mask
     if (mobileNumber) {
-      new Cleave(mobileNumber, {
-        phone: true,
-        phoneRegionCode: 'US'
-      });
+      
     }
 
     // Pincode
     if (zipCode) {
-      new Cleave(zipCode, {
-        delimiter: '',
-        numeral: true
-      });
+      
     }
   })();
 });

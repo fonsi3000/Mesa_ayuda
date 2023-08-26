@@ -156,7 +156,7 @@
         shared: false
       }
     };
-  if (typeof areaChartEl !== undefined && areaChartEl !== null) {
+  if (typeof areaChartEl !== "undefined" && areaChartEl !== null) {
     const areaChart = new ApexCharts(areaChartEl, areaChartConfig);
     areaChart.render();
   }
@@ -252,7 +252,7 @@
         opacity: 1
       }
     };
-  if (typeof barChartEl !== undefined && barChartEl !== null) {
+  if (typeof barChartEl !== "undefined" && barChartEl !== null) {
     const barChart = new ApexCharts(barChartEl, barChartConfig);
     barChart.render();
   }
@@ -375,7 +375,7 @@
         }
       }
     };
-  if (typeof scatterChartEl !== undefined && scatterChartEl !== null) {
+  if (typeof scatterChartEl !== "undefined" && scatterChartEl !== null) {
     const scatterChart = new ApexCharts(scatterChartEl, scatterChartConfig);
     scatterChart.render();
   }
@@ -470,7 +470,7 @@
         }
       }
     };
-  if (typeof lineChartEl !== undefined && lineChartEl !== null) {
+  if (typeof lineChartEl !== "undefined" && lineChartEl !== null) {
     const lineChart = new ApexCharts(lineChartEl, lineChartConfig);
     lineChart.render();
   }
@@ -540,7 +540,7 @@
         }
       }
     };
-  if (typeof horizontalBarChartEl !== undefined && horizontalBarChartEl !== null) {
+  if (typeof horizontalBarChartEl !== "undefined" && horizontalBarChartEl !== null) {
     const horizontalBarChart = new ApexCharts(horizontalBarChartEl, horizontalBarChartConfig);
     horizontalBarChart.render();
   }
@@ -669,7 +669,7 @@
         }
       }
     };
-  if (typeof candlestickEl !== undefined && candlestickEl !== null) {
+  if (typeof candlestickEl !== "undefined" && candlestickEl !== null) {
     const candlestickChart = new ApexCharts(candlestickEl, candlestickChartConfig);
     candlestickChart.render();
   }
@@ -829,7 +829,7 @@
         }
       }
     };
-  if (typeof heatMapEl !== undefined && heatMapEl !== null) {
+  if (typeof heatMapEl !== "undefined" && heatMapEl !== null) {
     const heatMapChart = new ApexCharts(heatMapEl, heatMapChartConfig);
     heatMapChart.render();
   }
@@ -897,7 +897,7 @@
       series: [80, 50, 35],
       labels: ['Comments', 'Replies', 'Shares']
     };
-  if (typeof radialBarChartEl !== undefined && radialBarChartEl !== null) {
+  if (typeof radialBarChartEl !== "undefined" && radialBarChartEl !== null) {
     const radialChart = new ApexCharts(radialBarChartEl, radialBarChartConfig);
     radialChart.render();
   }
@@ -980,7 +980,7 @@
         }
       }
     };
-  if (typeof radarChartEl !== undefined && radarChartEl !== null) {
+  if (typeof radarChartEl !== "undefined" && radarChartEl !== null) {
     const radarChart = new ApexCharts(radarChartEl, radarChartConfig);
     radarChart.render();
   }
@@ -1123,7 +1123,7 @@
         }
       ]
     };
-  if (typeof donutChartEl !== undefined && donutChartEl !== null) {
+  if (typeof donutChartEl !== "undefined" && donutChartEl !== null) {
     const donutChart = new ApexCharts(donutChartEl, donutChartConfig);
     donutChart.render();
   }

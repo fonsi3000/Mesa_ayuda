@@ -31,7 +31,7 @@ $(function () {
   // --------------------------------------------------------------------
   const wizardIcons = document.querySelector('.wizard-icons-example');
 
-  if (typeof wizardIcons !== undefined && wizardIcons !== null) {
+  if (typeof wizardIcons !== "undefined" && wizardIcons !== null) {
     const wizardIconsBtnNextList = [].slice.call(wizardIcons.querySelectorAll('.btn-next')),
       wizardIconsBtnPrevList = [].slice.call(wizardIcons.querySelectorAll('.btn-prev')),
       wizardIconsBtnSubmit = wizardIcons.querySelector('.btn-submit');
@@ -64,7 +64,7 @@ $(function () {
   // --------------------------------------------------------------------
   const wizardIconsVertical = document.querySelector('.wizard-vertical-icons-example');
 
-  if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
+  if (typeof wizardIconsVertical !== "undefined" && wizardIconsVertical !== null) {
     const wizardIconsVerticalBtnNextList = [].slice.call(wizardIconsVertical.querySelectorAll('.btn-next')),
       wizardIconsVerticalBtnPrevList = [].slice.call(wizardIconsVertical.querySelectorAll('.btn-prev')),
       wizardIconsVerticalBtnSubmit = wizardIconsVertical.querySelector('.btn-submit');
@@ -98,7 +98,7 @@ $(function () {
   // --------------------------------------------------------------------
   const wizardIconsModern = document.querySelector('.wizard-modern-icons-example');
 
-  if (typeof wizardIconsModern !== undefined && wizardIconsModern !== null) {
+  if (typeof wizardIconsModern !== "undefined" && wizardIconsModern !== null) {
     const wizardIconsModernBtnNextList = [].slice.call(wizardIconsModern.querySelectorAll('.btn-next')),
       wizardIconsModernBtnPrevList = [].slice.call(wizardIconsModern.querySelectorAll('.btn-prev')),
       wizardIconsModernBtnSubmit = wizardIconsModern.querySelector('.btn-submit');
@@ -132,7 +132,7 @@ $(function () {
   // --------------------------------------------------------------------
   const wizardIconsModernVertical = document.querySelector('.wizard-modern-vertical-icons-example');
 
-  if (typeof wizardIconsModernVertical !== undefined && wizardIconsModernVertical !== null) {
+  if (typeof wizardIconsModernVertical !== "undefined" && wizardIconsModernVertical !== null) {
     const wizardIconsModernVerticalBtnNextList = [].slice.call(wizardIconsModernVertical.querySelectorAll('.btn-next')),
       wizardIconsModernVerticalBtnPrevList = [].slice.call(wizardIconsModernVertical.querySelectorAll('.btn-prev')),
       wizardIconsModernVerticalBtnSubmit = wizardIconsModernVertical.querySelector('.btn-submit');

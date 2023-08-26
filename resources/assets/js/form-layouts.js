@@ -13,42 +13,23 @@
   // Phone Number
   if (phoneMaskList) {
     phoneMaskList.forEach(function (phoneMask) {
-      new Cleave(phoneMask, {
-        phone: true,
-        phoneRegionCode: 'US'
-      });
+      
     });
   }
 
   // Credit Card
   if (creditCardMask) {
-    new Cleave(creditCardMask, {
-      creditCard: true,
-      onCreditCardTypeChanged: function (type) {
-        if (type != '' && type != 'unknown') {
-          document.querySelector('.card-type').innerHTML =
-            '<img src="' + assetsPath + 'img/icons/payments/' + type + '-cc.png" height="28"/>';
-        } else {
-          document.querySelector('.card-type').innerHTML = '';
-        }
-      }
-    });
+    
   }
 
   // Expiry Date Mask
   if (expiryDateMask) {
-    new Cleave(expiryDateMask, {
-      date: true,
-      delimiter: '/',
-      datePattern: ['m', 'y']
-    });
+    
   }
 
   // CVV
   if (cvvMask.length) {
-    new Cleave(cvvMask, {
-      numeral: true
-    });
+    
   }
 
   // Flat Picker Birth Date

@@ -33,7 +33,7 @@ $(function () {
     wizardNumberedBtnPrevList = [].slice.call(wizardNumbered.querySelectorAll('.btn-prev')),
     wizardNumberedBtnSubmit = wizardNumbered.querySelector('.btn-submit');
 
-  if (typeof wizardNumbered !== undefined && wizardNumbered !== null) {
+  if (typeof wizardNumbered !== "undefined" && wizardNumbered !== null) {
     const numberedStepper = new Stepper(wizardNumbered, {
       linear: false
     });
@@ -65,7 +65,7 @@ $(function () {
     wizardVerticalBtnPrevList = [].slice.call(wizardVertical.querySelectorAll('.btn-prev')),
     wizardVerticalBtnSubmit = wizardVertical.querySelector('.btn-submit');
 
-  if (typeof wizardVertical !== undefined && wizardVertical !== null) {
+  if (typeof wizardVertical !== "undefined" && wizardVertical !== null) {
     const verticalStepper = new Stepper(wizardVertical, {
       linear: false
     });
@@ -97,7 +97,7 @@ $(function () {
     wizardModernBtnNextList = [].slice.call(wizardModern.querySelectorAll('.btn-next')),
     wizardModernBtnPrevList = [].slice.call(wizardModern.querySelectorAll('.btn-prev')),
     wizardModernBtnSubmit = wizardModern.querySelector('.btn-submit');
-  if (typeof wizardModern !== undefined && wizardModern !== null) {
+  if (typeof wizardModern !== "undefined" && wizardModern !== null) {
     const modernStepper = new Stepper(wizardModern, {
       linear: false
     });
@@ -128,7 +128,7 @@ $(function () {
     wizardModernVerticalBtnNextList = [].slice.call(wizardModernVertical.querySelectorAll('.btn-next')),
     wizardModernVerticalBtnPrevList = [].slice.call(wizardModernVertical.querySelectorAll('.btn-prev')),
     wizardModernVerticalBtnSubmit = wizardModernVertical.querySelector('.btn-submit');
-  if (typeof wizardModernVertical !== undefined && wizardModernVertical !== null) {
+  if (typeof wizardModernVertical !== "undefined" && wizardModernVertical !== null) {
     const modernVerticalStepper = new Stepper(wizardModernVertical, {
       linear: false
     });

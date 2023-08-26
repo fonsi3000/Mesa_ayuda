@@ -27,85 +27,47 @@
 
   // Credit Card
   if (creditCard) {
-    new Cleave(creditCard, {
-      creditCard: true,
-      onCreditCardTypeChanged: function (type) {
-        if (type != '' && type != 'unknown') {
-          document.querySelector('.card-type').innerHTML =
-            '<img src="' + assetsPath + 'img/icons/payments/' + type + '-cc.png" height="28"/>';
-        } else {
-          document.querySelector('.card-type').innerHTML = '';
-        }
-      }
-    });
+   
   }
 
   // Phone Number
   if (phoneMask) {
-    new Cleave(phoneMask, {
-      phone: true,
-      phoneRegionCode: 'US'
-    });
+    
   }
 
   // Date
   if (dateMask) {
-    new Cleave(dateMask, {
-      date: true,
-      delimiter: '-',
-      datePattern: ['Y', 'm', 'd']
-    });
+   
   }
 
   // Time
   if (timeMask) {
-    new Cleave(timeMask, {
-      time: true,
-      timePattern: ['h', 'm', 's']
-    });
+    
   }
 
   //Numeral
   if (numeralMask) {
-    new Cleave(numeralMask, {
-      numeral: true,
-      numeralThousandsGroupStyle: 'thousand'
-    });
+    
   }
 
   //Block
   if (blockMask) {
-    new Cleave(blockMask, {
-      blocks: [4, 3, 3],
-      uppercase: true
-    });
+    
   }
 
   // Delimiter
   if (delimiterMask) {
-    new Cleave(delimiterMask, {
-      delimiter: '·',
-      blocks: [3, 3, 3],
-      uppercase: true
-    });
+    
   }
 
   // Custom Delimiter
   if (customDelimiter) {
-    new Cleave(customDelimiter, {
-      delimiters: ['.', '.', '-'],
-      blocks: [3, 3, 3, 2],
-      uppercase: true
-    });
+   
   }
 
   // Prefix
   if (prefixMask) {
-    new Cleave(prefixMask, {
-      prefix: '+63',
-      blocks: [3, 3, 3, 4],
-      uppercase: true
-    });
+    
   }
 })();
 

@@ -10,9 +10,7 @@
 
   // Prefix
   if (paymentAmount) {
-    new Cleave(paymentAmount, {
-      numeral: true
-    });
+    
   }
 
   // Datepicker

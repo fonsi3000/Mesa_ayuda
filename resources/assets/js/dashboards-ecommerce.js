@@ -94,7 +94,7 @@
       }
     };
 
-  if (typeof visitsRadialChartEl !== undefined && visitsRadialChartEl !== null) {
+  if (typeof visitsRadialChartEl !== "undefined" && visitsRadialChartEl !== null) {
     const visitsRadialChart = new ApexCharts(visitsRadialChartEl, visitsRadialChartConfig);
     visitsRadialChart.render();
   }
@@ -171,7 +171,7 @@
         }
       }
     };
-  if (typeof revenueGrowthChartEl !== undefined && revenueGrowthChartEl !== null) {
+  if (typeof revenueGrowthChartEl !== "undefined" && revenueGrowthChartEl !== null) {
     const revenueGrowthChart = new ApexCharts(revenueGrowthChartEl, revenueGrowthChartConfig);
     revenueGrowthChart.render();
   }
@@ -281,7 +281,7 @@
         tickAmount: 4
       }
     };
-  if (typeof orderSummaryEl !== undefined && orderSummaryEl !== null) {
+  if (typeof orderSummaryEl !== "undefined" && orderSummaryEl !== null) {
     const orderSummary = new ApexCharts(orderSummaryEl, orderSummaryConfig);
     orderSummary.render();
   }
@@ -342,7 +342,7 @@
       }
     };
 
-  if (typeof marketingCampaignChart1El !== undefined && marketingCampaignChart1El !== null) {
+  if (typeof marketingCampaignChart1El !== "undefined" && marketingCampaignChart1El !== null) {
     const marketingCampaignChart1 = new ApexCharts(marketingCampaignChart1El, marketingCampaignChart1Config);
     marketingCampaignChart1.render();
   }
@@ -403,7 +403,7 @@
       }
     };
 
-  if (typeof marketingCampaignChart2El !== undefined && marketingCampaignChart2El !== null) {
+  if (typeof marketingCampaignChart2El !== "undefined" && marketingCampaignChart2El !== null) {
     const marketingCampaignChart2 = new ApexCharts(marketingCampaignChart2El, marketingCampaignChart2Config);
     marketingCampaignChart2.render();
   }

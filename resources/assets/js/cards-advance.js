@@ -127,7 +127,7 @@
         }
       ]
     };
-  if (typeof salesBarChartEl !== undefined && salesBarChartEl !== null) {
+  if (typeof salesBarChartEl !== "undefined" && salesBarChartEl !== null) {
     const salesBarChart = new ApexCharts(salesBarChartEl, salesBarChartConfig);
     salesBarChart.render();
   }

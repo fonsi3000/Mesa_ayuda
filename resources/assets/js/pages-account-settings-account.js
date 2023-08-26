@@ -139,18 +139,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
       zipCode = document.querySelector('#zipCode');
     // Phone Mask
     if (phoneNumber) {
-      new Cleave(phoneNumber, {
-        phone: true,
-        phoneRegionCode: 'US'
-      });
+      
     }
 
     // Pincode
     if (zipCode) {
-      new Cleave(zipCode, {
-        delimiter: '',
-        numeral: true
-      });
+      
     }
 
     // Update/reset user image of account page

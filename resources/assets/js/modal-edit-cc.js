@@ -12,34 +12,17 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
     // Credit Card
     if (editCreditCardMaskEdit) {
-      new Cleave(editCreditCardMaskEdit, {
-        creditCard: true,
-        onCreditCardTypeChanged: function (type) {
-          if (type != '' && type != 'unknown') {
-            document.querySelector('.card-type-edit').innerHTML =
-              '<img src="' + assetsPath + 'img/icons/payments/' + type + '-cc.png" height="28"/>';
-          } else {
-            document.querySelector('.card-type-edit').innerHTML = '';
-          }
-        }
-      });
+      
     }
 
     // Expiry Date MaskEdit
     if (editExpiryDateMaskEdit) {
-      new Cleave(editExpiryDateMaskEdit, {
-        date: true,
-        delimiter: '/',
-        datePattern: ['m', 'y']
-      });
+      
     }
 
     // CVV MaskEdit
     if (editCVVMaskEdit) {
-      new Cleave(editCVVMaskEdit, {
-        numeral: true,
-        numeralPositiveOnly: true
-      });
+      
     }
 
     // Credit card form validation

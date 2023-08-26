@@ -12,20 +12,14 @@
   // Price
   if (invoiceItemPriceList) {
     invoiceItemPriceList.forEach(function (invoiceItemPrice) {
-      new Cleave(invoiceItemPrice, {
-        delimiter: '',
-        numeral: true
-      });
+      
     });
   }
 
   // Qty
   if (invoiceItemQtyList) {
     invoiceItemQtyList.forEach(function (invoiceItemQty) {
-      new Cleave(invoiceItemQty, {
-        delimiter: '',
-        numeral: true
-      });
+      
     });
   }
 

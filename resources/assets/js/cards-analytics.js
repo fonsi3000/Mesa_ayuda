@@ -144,7 +144,7 @@
         }
       }
     };
-  if (typeof analyticsBarChartEl !== undefined && analyticsBarChartEl !== null) {
+  if (typeof analyticsBarChartEl !== "undefined" && analyticsBarChartEl !== null) {
     const analyticsBarChart = new ApexCharts(analyticsBarChartEl, analyticsBarChartConfig);
     analyticsBarChart.render();
   }
@@ -221,7 +221,7 @@
       }
     };
 
-  if (typeof referralLineChartEl !== undefined && referralLineChartEl !== null) {
+  if (typeof referralLineChartEl !== "undefined" && referralLineChartEl !== null) {
     const referralLineChart = new ApexCharts(referralLineChartEl, referralLineChartConfig);
     referralLineChart.render();
   }
@@ -280,7 +280,7 @@
       }
     };
 
-  if (typeof conversionBarChartEl !== undefined && conversionBarChartEl !== null) {
+  if (typeof conversionBarChartEl !== "undefined" && conversionBarChartEl !== null) {
     const conversionBarChart = new ApexCharts(conversionBarChartEl, conversionBarChartConfig);
     conversionBarChart.render();
   }
@@ -355,7 +355,7 @@
       }
     };
 
-  if (typeof impressionDonutChartEl !== undefined && impressionDonutChartEl !== null) {
+  if (typeof impressionDonutChartEl !== "undefined" && impressionDonutChartEl !== null) {
     const impressionDonutChart = new ApexCharts(impressionDonutChartEl, impressionDonutChartConfig);
     impressionDonutChart.render();
   }
@@ -428,7 +428,7 @@
       labels: ['Growth']
     };
 
-  if (typeof growthRadialChartEl !== undefined && growthRadialChartEl !== null) {
+  if (typeof growthRadialChartEl !== "undefined" && growthRadialChartEl !== null) {
     const growthRadialChart = new ApexCharts(growthRadialChartEl, growthRadialChartConfig);
     growthRadialChart.render();
   }
@@ -507,7 +507,7 @@
       }
     };
 
-  if (typeof visitsRadialChartEl !== undefined && visitsRadialChartEl !== null) {
+  if (typeof visitsRadialChartEl !== "undefined" && visitsRadialChartEl !== null) {
     const visitsRadialChart = new ApexCharts(visitsRadialChartEl, visitsRadialChartConfig);
     visitsRadialChart.render();
   }
@@ -580,7 +580,7 @@
         }
       }
     };
-  if (typeof statisticsRadialChartEl !== undefined && statisticsRadialChartEl !== null) {
+  if (typeof statisticsRadialChartEl !== "undefined" && statisticsRadialChartEl !== null) {
     const statisticsRadialChart = new ApexCharts(statisticsRadialChartEl, statisticsRadialChartConfig);
     statisticsRadialChart.render();
   }
@@ -652,7 +652,7 @@
         }
       }
     };
-  if (typeof timeSpentGaugeChartEl !== undefined && timeSpentGaugeChartEl !== null) {
+  if (typeof timeSpentGaugeChartEl !== "undefined" && timeSpentGaugeChartEl !== null) {
     const timeSpentGaugeChart = new ApexCharts(timeSpentGaugeChartEl, timeSpentGaugeChartConfig);
     timeSpentGaugeChart.render();
   }
@@ -810,7 +810,7 @@
       }
     };
 
-  if (typeof totalEarningChartEl !== undefined && totalEarningChartEl !== null) {
+  if (typeof totalEarningChartEl !== "undefined" && totalEarningChartEl !== null) {
     const totalEarningChart = new ApexCharts(totalEarningChartEl, totalEarningChartConfig);
     totalEarningChart.render();
   }
@@ -920,7 +920,7 @@
         tickAmount: 4
       }
     };
-  if (typeof orderSummaryEl !== undefined && orderSummaryEl !== null) {
+  if (typeof orderSummaryEl !== "undefined" && orderSummaryEl !== null) {
     const orderSummary = new ApexCharts(orderSummaryEl, orderSummaryConfig);
     orderSummary.render();
   }

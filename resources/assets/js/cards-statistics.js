@@ -86,7 +86,7 @@
         }
       }
     };
-  if (typeof conversationChartEl !== undefined && conversationChartEl !== null) {
+  if (typeof conversationChartEl !== "undefined" && conversationChartEl !== null) {
     const conversationChart = new ApexCharts(conversationChartEl, conversationChartConfig);
     conversationChart.render();
   }
@@ -161,7 +161,7 @@
         }
       }
     };
-  if (typeof incomeChartEl !== undefined && incomeChartEl !== null) {
+  if (typeof incomeChartEl !== "undefined" && incomeChartEl !== null) {
     const incomeChart = new ApexCharts(incomeChartEl, incomeChartConfig);
     incomeChart.render();
   }
@@ -236,7 +236,7 @@
         }
       }
     };
-  if (typeof profitChartEl !== undefined && profitChartEl !== null) {
+  if (typeof profitChartEl !== "undefined" && profitChartEl !== null) {
     const profitChart = new ApexCharts(profitChartEl, profitChartConfig);
     profitChart.render();
   }
@@ -311,7 +311,7 @@
         }
       }
     };
-  if (typeof expensesLineChartEl !== undefined && expensesLineChartEl !== null) {
+  if (typeof expensesLineChartEl !== "undefined" && expensesLineChartEl !== null) {
     const expensesLineChart = new ApexCharts(expensesLineChartEl, expensesLineChartConfig);
     expensesLineChart.render();
   }
@@ -437,7 +437,7 @@
         }
       }
     };
-  if (typeof registrationsBarChartEl !== undefined && registrationsBarChartEl !== null) {
+  if (typeof registrationsBarChartEl !== "undefined" && registrationsBarChartEl !== null) {
     const registrationsBarChart = new ApexCharts(registrationsBarChartEl, registrationsBarChartConfig);
     registrationsBarChart.render();
   }
@@ -513,7 +513,7 @@
         }
       }
     };
-  if (typeof visitsBarChartEl !== undefined && visitsBarChartEl !== null) {
+  if (typeof visitsBarChartEl !== "undefined" && visitsBarChartEl !== null) {
     const visitsBarChart = new ApexCharts(visitsBarChartEl, visitsBarChartConfig);
     visitsBarChart.render();
   }
@@ -579,7 +579,7 @@
         }
       }
     };
-  if (typeof registrationChartEl !== undefined && registrationChartEl !== null) {
+  if (typeof registrationChartEl !== "undefined" && registrationChartEl !== null) {
     const registrationChart = new ApexCharts(registrationChartEl, registrationChartConfig);
     registrationChart.render();
   }
@@ -645,7 +645,7 @@
         }
       }
     };
-  if (typeof expensesChartEl !== undefined && expensesChartEl !== null) {
+  if (typeof expensesChartEl !== "undefined" && expensesChartEl !== null) {
     const expensesChart = new ApexCharts(expensesChartEl, expensesChartConfig);
     expensesChart.render();
   }
@@ -711,7 +711,7 @@
         }
       }
     };
-  if (typeof usersChartEl !== undefined && usersChartEl !== null) {
+  if (typeof usersChartEl !== "undefined" && usersChartEl !== null) {
     const usersChart = new ApexCharts(usersChartEl, usersChartConfig);
     usersChart.render();
   }

@@ -11,7 +11,7 @@
   // Wizard Validation
   // --------------------------------------------------------------------
   const wizardValidation = document.querySelector('#wizard-validation');
-  if (typeof wizardValidation !== undefined && wizardValidation !== null) {
+  if (typeof wizardValidation !== "undefined" && wizardValidation !== null) {
     // Wizard form
     const wizardValidationForm = wizardValidation.querySelector('#wizard-validation-form');
     // Wizard steps

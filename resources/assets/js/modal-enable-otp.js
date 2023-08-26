@@ -10,10 +10,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
     // Phone Number Input Mask
     if (phoneMask) {
-      new Cleave(phoneMask, {
-        phone: true,
-        phoneRegionCode: 'US'
-      });
+      
     }
 
     // Enable OTP form validation

@@ -19,7 +19,7 @@
   // --------------------------------------------------------------------
 
   const wizardCreateDeal = document.querySelector('#wizard-create-deal');
-  if (typeof wizardCreateDeal !== undefined && wizardCreateDeal !== null) {
+  if (typeof wizardCreateDeal !== "undefined" && wizardCreateDeal !== null) {
     // Wizard form
     const wizardCreateDealForm = wizardCreateDeal.querySelector('#wizard-create-deal-form');
     // Wizard steps

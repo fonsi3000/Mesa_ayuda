@@ -15,10 +15,7 @@
 
   // Phone Number Input Mask
   if (phoneMask) {
-    new Cleave(phoneMask, {
-      phone: true,
-      phoneRegionCode: 'US'
-    });
+    
   }
 
   // select2 (Country)
@@ -66,7 +63,7 @@
   // --------------------------------------------------------------------
 
   const wizardPropertyListing = document.querySelector('#wizard-property-listing');
-  if (typeof wizardPropertyListing !== undefined && wizardPropertyListing !== null) {
+  if (typeof wizardPropertyListing !== "undefined" && wizardPropertyListing !== null) {
     // Wizard form
     const wizardPropertyListingForm = wizardPropertyListing.querySelector('#wizard-property-listing-form');
     // Wizard steps

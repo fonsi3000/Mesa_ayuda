@@ -11,18 +11,7 @@
     layoutMenu4 = document.querySelector('#layout-menu4');
 
   // Initializing four vertical demo menus
-  if (layoutMenu1) {
-    new Menu(layoutMenu1);
-  }
-  if (layoutMenu2) {
-    new Menu(layoutMenu2);
-  }
-  if (layoutMenu3) {
-    new Menu(layoutMenu3);
-  }
-  if (layoutMenu4) {
-    new Menu(layoutMenu4);
-  }
+
 
   // On toggle button click
   const appToggleBtn = document.querySelector('.app-brand-toggle');

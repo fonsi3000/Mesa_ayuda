@@ -26,7 +26,7 @@ $(function () {
 document.addEventListener('DOMContentLoaded', function (e) {
   (function () {
     const stepsValidation = document.querySelector('#multiStepsValidation');
-    if (typeof stepsValidation !== undefined && stepsValidation !== null) {
+    if (typeof stepsValidation !== "undefined" && stepsValidation !== null) {
       // Multi Steps form
       const stepsValidationForm = stepsValidation.querySelector('#multiStepsForm');
       // Form steps
@@ -45,50 +45,27 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
       // Expiry Date Mask
       if (multiStepsExDate) {
-        new Cleave(multiStepsExDate, {
-          date: true,
-          delimiter: '/',
-          datePattern: ['m', 'y']
-        });
+        
       }
 
       // CVV
       if (multiStepsCvv) {
-        new Cleave(multiStepsCvv, {
-          numeral: true,
-          numeralPositiveOnly: true
-        });
+        
       }
 
       // Mobile
       if (multiStepsMobile) {
-        new Cleave(multiStepsMobile, {
-          phone: true,
-          phoneRegionCode: 'US'
-        });
+        
       }
 
       // Pincode
       if (multiStepsPincode) {
-        new Cleave(multiStepsPincode, {
-          delimiter: '',
-          numeral: true
-        });
+        
       }
 
       // Credit Card
       if (multiStepsCard) {
-        new Cleave(multiStepsCard, {
-          creditCard: true,
-          onCreditCardTypeChanged: function (type) {
-            if (type != '' && type != 'unknown') {
-              document.querySelector('.card-type').innerHTML =
-                '<img src="' + assetsPath + 'img/icons/payments/' + type + '-cc.png" height="28"/>';
-            } else {
-              document.querySelector('.card-type').innerHTML = '';
-            }
-          }
-        });
+        
       }
 
       let validationStepper = new Stepper(stepsValidation, {

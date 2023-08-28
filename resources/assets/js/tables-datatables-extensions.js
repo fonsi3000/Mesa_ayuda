@@ -264,7 +264,7 @@ $(function () {
       var navHeight = $('#layout-navbar').outerHeight();
       new $.fn.dataTable.FixedHeader(dt_fixedheader).headerOffset(navHeight);
     } else {
-      new $.fn.dataTable.FixedHeader(dt_fixedheader);
+      
     }
   }
 

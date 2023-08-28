@@ -729,7 +729,7 @@
         }
       }
     };
-  if (typeof revenueGrowthChartEl !== undefined && revenueGrowthChartEl !== null) {
+  if (typeof revenueGrowthChartEl !== "undefined" && revenueGrowthChartEl !== null) {
     const revenueGrowthChart = new ApexCharts(revenueGrowthChartEl, revenueGrowthChartConfig);
     revenueGrowthChart.render();
   }

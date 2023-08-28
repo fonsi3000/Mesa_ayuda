@@ -106,9 +106,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     // Verification masking
     if (numeralMask.length) {
       numeralMask.forEach(e => {
-        new Cleave(e, {
-          numeral: true
-        });
+
       });
     }
   })();

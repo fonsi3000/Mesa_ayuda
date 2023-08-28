@@ -97,19 +97,13 @@ if (document.getElementById('layout-menu')) {
     if (window.Helpers.isLightStyle()) {
       if (styleSwitcherToggleEl) {
         styleSwitcherToggleEl.querySelector('i').classList.add('bx-moon');
-        new bootstrap.Tooltip(styleSwitcherToggleEl, {
-          title: 'Dark mode',
-          fallbackPlacements: ['bottom']
-        });
+        
       }
       switchImage('light');
     } else {
       if (styleSwitcherToggleEl) {
         styleSwitcherToggleEl.querySelector('i').classList.add('bx-sun');
-        new bootstrap.Tooltip(styleSwitcherToggleEl, {
-          title: 'Light mode',
-          fallbackPlacements: ['bottom']
-        });
+        
       }
       switchImage('dark');
     }
@@ -204,7 +198,7 @@ if (document.getElementById('layout-menu')) {
 
   // Accordion active class
   const accordionActiveFunction = function (e) {
-    if (e.type == 'show.bs.collapse' || e.type == 'show.bs.collapse') {
+    if (e.type == 'show.bs.collapse') {
       e.target.closest('.accordion-item').classList.add('active');
     } else {
       e.target.closest('.accordion-item').classList.remove('active');

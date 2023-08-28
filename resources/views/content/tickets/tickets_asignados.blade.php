@@ -23,6 +23,7 @@ $configData = Helper::appClasses();
         <div class="card">
         <div class="table-responsive text-nowrap">
           <table class="table">
+            <caption>Lista de Tickets asignados</caption>
             <thead>
               <tr>
                 <th>Id</th>

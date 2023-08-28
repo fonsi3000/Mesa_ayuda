@@ -17,8 +17,7 @@
     collapseElementList.map(function (collapseElement) {
       collapseElement.addEventListener('click', event => {
         event.preventDefault();
-        // Collapse the element
-        new bootstrap.Collapse(collapseElement.closest('.card').querySelector('.collapse'));
+        
         // Toggle collapsed class in `.card-header` element
         collapseElement.closest('.card-header').classList.toggle('collapsed');
         // Toggle class bx-chevron-down & bx-chevron-up

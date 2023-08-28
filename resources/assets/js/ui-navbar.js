@@ -13,7 +13,7 @@
   const megaDropdown = document.querySelectorAll('.nav-link.mega-dropdown');
   if (megaDropdown) {
     megaDropdown.forEach(e => {
-      new MegaDropdown(e);
+      
     });
   }
 })();

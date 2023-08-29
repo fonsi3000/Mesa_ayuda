@@ -18,7 +18,7 @@
 
   
   <!-- <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico') }}" /> -->
-  
+  <title>.</title>
 
   <!-- Include Styles -->
   @include('layouts/sections/styles')

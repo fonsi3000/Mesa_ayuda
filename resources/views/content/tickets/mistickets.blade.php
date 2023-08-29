@@ -24,7 +24,7 @@ $configData = Helper::appClasses();
           
         <div class="table-responsive text-nowrap">
           <table class="table">
-            <caption>Lista de Mis tickets</caption>
+            <caption>.</caption>
             <thead>
               <tr>
                 <th>Id</th>

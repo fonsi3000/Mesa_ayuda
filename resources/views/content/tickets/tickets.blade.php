@@ -15,7 +15,7 @@ $configData = Helper::appClasses();
           <span class="avatar-initial rounded-circle bg-label-info"><i class='bx bx-edit fs-3'></i></span>
         </div>
         <span class="d-block mb-1 text-nowrap">Tickets abiertos</span>
-        <h2 class="mb-0">{{$n_tickets}}</h2>
+        <h2 class="mb-0">{{$TicketsAbiertos}}</h2>
       </div>
     </div>
   </div>
@@ -26,7 +26,7 @@ $configData = Helper::appClasses();
           <span class="avatar-initial rounded-circle bg-label-warning"><i class='bx bx-dock-top fs-3'></i></span>
         </div>
         <span class="d-block mb-1 text-nowrap">Tickets Asignados</span>
-        <h2 class="mb-0">17</h2>
+        <h2 class="mb-0">{{$TicketsAsignados}}</h2>
       </div>
     </div>
   </div>
@@ -37,7 +37,7 @@ $configData = Helper::appClasses();
           <span class="avatar-initial rounded-circle bg-label-danger"><i class='bx bx-message-square-detail fs-3'></i></span>
         </div>
         <span class="d-block mb-1 text-nowrap">Tickets Cerrados</span>
-        <h2 class="mb-0">29</h2>
+        <h2 class="mb-0">{{$TicketsCerrados}}</h2>
       </div>
     </div>
   </div>
@@ -75,7 +75,7 @@ $configData = Helper::appClasses();
         <div class="card">
         <div class="table-responsive text-nowrap">
           <table class="table">
-            <caption>Lista de nuevos tickets</caption>
+            <caption>.</caption>
             <thead>
               <tr>
                 <th>Id</th>

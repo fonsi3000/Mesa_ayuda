@@ -17,7 +17,7 @@ $configData = Helper::appClasses();
      <a href="{{ route('categories.create') }}" class="btn btn-primary">Crear Nueva Categoria</a>
      @endcan 
      <table class="table">
-      <caption>Lista de Categorías</caption>
+      <caption></caption>
        <thead>
          <tr>
            <th>Id</th>

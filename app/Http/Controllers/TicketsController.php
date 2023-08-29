@@ -25,8 +25,16 @@ class TicketsController extends Controller
         $n_tickets = Ticket::count();
 
         $tickets = Ticket::all();
+
+        $TicketsAbiertos = Ticket::where('agent_asignado', null)->count();
+        $TicketsAsignados = Ticket::whereNotNull('agent_asignado')->count();
+        $TicketsCerrados = Ticket::whereNotNull('respuesta')->count();
+
+        // Resta el número de TicketsAsignados por cada TicketsCerrados
+        $TicketsAsignados -= $TicketsCerrados;
         
-        return view('content.tickets.tickets', ['ticket'=> $tickets,'n_users' => $n_users, 'n_categories' => $n_categories,'n_tickets' => $n_tickets]);
+        return view('content.tickets.tickets', ['ticket'=> $tickets,'n_users' => $n_users, 'n_categories' => $n_categories,
+        'TicketsAbiertos' => $TicketsAbiertos,'TicketsAsignados' => $TicketsAsignados,'TicketsCerrados' => $TicketsCerrados]);
     
         return view('content.tickets.mistickets', ['ticket'=> $tickets]);
     }

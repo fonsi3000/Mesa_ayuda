@@ -11,6 +11,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\App;
 
 class User extends Authenticatable
 {
@@ -65,7 +66,9 @@ class User extends Authenticatable
     protected static function booted()
     {
         static::created(function ($user) {
-            $user->assignRole('user');
+            if (!App::runningInConsole() && $user->rol_id === null) {
+                $user->assignRole('user');
+            }
         });
     }
 }

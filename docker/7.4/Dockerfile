@@ -5,6 +5,9 @@ LABEL maintainer="Taylor Otwell"
 ARG WWWGROUP
 ARG NODE_VERSION=16
 
+# Crea un usuario no privilegiado y un grupo antes de establecer el directorio de trabajo
+RUN groupadd -r sail && useradd -r -g sail -u 1337 -m sail
+
 WORKDIR /var/www/html
 
 ENV DEBIAN_FRONTEND noninteractive

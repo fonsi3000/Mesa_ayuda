@@ -8,6 +8,8 @@ use App\Models\User;
 
 class UserSeeder extends Seeder
 {
+
+    protected $order = 2;
     /**
      * Run the database seeds.
      *

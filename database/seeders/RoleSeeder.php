@@ -9,6 +9,8 @@ use Spatie\Permission\Models\Permission;
 
 class RoleSeeder extends Seeder
 {
+
+    protected $order = 1;
     /**
      * Run the database seeds.
      *

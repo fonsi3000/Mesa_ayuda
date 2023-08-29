@@ -6,6 +6,7 @@
  <div class="table-responsive text-nowrap">
    <a href="{{ route('users.create') }}" class="btn btn-primary">Crear Nuevo Usuario</a>
    <table class="table">
+    <caption>.</caption>
      <thead>
        <tr>
          <th>Id</th>

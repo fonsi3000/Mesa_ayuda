@@ -15,15 +15,11 @@ $customizerHidden = 'customizer-hide';
 @section('content')
 <div class="authentication-wrapper authentication-cover">
   <div class="authentication-inner row m-0">
-    <div class="authentication-wrapper authentication-cover">
-      <div class="authentication-inner row m-0">
-        <!-- /Left Text -->
-        <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center">
-          <div class="flex-row text-center " style="margin-left: -110px;">
+    <!-- Carrusel a la izquierda -->
+    <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center">
             <!-- INICIO CARROUSEL -->
-            <div class="container">
-        
-         <div class=" px-0" style="width: 106%;">
+      <div class="container">
+        <div class="px-0">
           <div class="carousel slide" data-ride="carousel">
             <!-- Indicadores -->
             <ul class="carousel-indicators">
@@ -31,20 +27,20 @@ $customizerHidden = 'customizer-hide';
               <li data-target=".carousel" data-slide-to="1"></li>
               <li data-target=".carousel" data-slide-to="2"></li>
             </ul>
-    
+
             <!-- Imágenes -->
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="{{ asset('assets/img/pages/img1.png') }}" alt="Imagen 1">
+                <img src="{{ asset('assets/img/pages/img1.png') }}" alt="Imagen 1" class="d-block w-100">
               </div>
               <div class="carousel-item">
-                <img src="{{ asset('assets/img/pages/img2.png') }}" alt="Imagen 2">
+                <img src="{{ asset('assets/img/pages/img2.png') }}" alt="Imagen 2" class="d-block w-100">
               </div>
               <div class="carousel-item">
-                <img src="{{ asset('assets/img/pages/img3.png') }}" alt="Imagen 3">
+                <img src="{{ asset('assets/img/pages/img3.png') }}" alt="Imagen 3" class="d-block w-100">
               </div>
             </div>
-    
+
             <!-- Controles -->
             <a class="carousel-control-prev" href=".carousel" data-slide="prev">
               <span class="carousel-control-prev-icon"></span>
@@ -55,25 +51,17 @@ $customizerHidden = 'customizer-hide';
           </div>
         </div>
       </div>
+      <!-- FIN CARROUSEL -->
+    </div>
     
-          <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-    
-            <!-- FIN CARROUSEL -->
-          </div>
-        </div>
-        <!-- /Left Text -->
-    <!-- Forgot Password -->
+    <!-- Formulario de inicio de sesión a la derecha -->
     <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5 p-4">
+
+          <!-- Forgot Password -->
       <div class="w-px-400 mx-auto">
         <!-- Logo -->
         <div class="app-brand justify-content-center mb-4">
-          <a href="{{url('/')}}" class="app-brand-link gap-2 mb-2">
-            <span class="app-brand-logo demo">@include('_partials.macros')</span>
-            <span class="app-brand-text demo h3 mb-0 fw-bold">{{config('variables.templateName')}}</span>
-          </a>
+          <img src="https://parquesoft.com/wp-content/uploads/2020/05/PS-Sucrea.png" width="auto" height=70 alt="Imagen centrada" class="center">
         </div>
         <!-- /Logo -->
         <h4 class="mb-2">Forgot Password? 🔒</h4>
@@ -109,6 +97,10 @@ $customizerHidden = 'customizer-hide';
       </div>
     </div>
     <!-- /Forgot Password -->
-  </div>
-</div>
+    
+          <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 @endsection
+

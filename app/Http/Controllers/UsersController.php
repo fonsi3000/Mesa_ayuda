@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Livewire\Users;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -63,11 +64,13 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        $roles = Role::all();
-        $user = User::find($id);
-        return view('content.users.users-show',['user'=> $user],['roles'=> $roles]);
-    }
+{
+    $roles = Role::all();
+    $user = User::find($id);
+    $categories = Categories::all();
+
+    return view('content.users.users-show', compact('user', 'roles', 'categories'));
+}
 
     /**
      * Show the form for editing the specified resource.
@@ -105,6 +108,13 @@ class UsersController extends Controller
         $user->syncRoles($roleName);
        
         $user -> save();
+
+            // Obtén las categorías seleccionadas del formulario
+        $selectedCategories = $request->input('categories', []);
+
+        // Sincroniza las categorías seleccionadas en la tabla pivot category_user
+        $user->categories()->sync($selectedCategories);
+
 
         return redirect()->route('users.index');
     }

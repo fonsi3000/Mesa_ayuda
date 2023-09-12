@@ -19,25 +19,43 @@ class TicketsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $n_users = User::count();
-        $n_categories = Categories::count();
-        $n_tickets = Ticket::count();
+{
+    $n_users = User::count();
+    $n_categories = Categories::count();
+    $n_tickets = Ticket::count();
 
-        $tickets = Ticket::all();
+    $tickets = Ticket::all();
 
-        $TicketsAbiertos = Ticket::where('agent_asignado', null)->count();
-        $TicketsAsignados = Ticket::whereNotNull('agent_asignado')->count();
-        $TicketsCerrados = Ticket::whereNotNull('respuesta')->count();
+    $TicketsAbiertos = Ticket::where('agent_asignado', null)->count();
+    $TicketsAsignados = Ticket::whereNotNull('agent_asignado')->count();
+    $TicketsCerrados = Ticket::whereNotNull('respuesta')->count();
 
-        // Resta el número de TicketsAsignados por cada TicketsCerrados
-        $TicketsAsignados -= $TicketsCerrados;
-        
-        return view('content.tickets.tickets', ['ticket'=> $tickets,'n_users' => $n_users, 'n_categories' => $n_categories,
-        'TicketsAbiertos' => $TicketsAbiertos,'TicketsAsignados' => $TicketsAsignados,'TicketsCerrados' => $TicketsCerrados]);
+    // Resta el número de TicketsAsignados por cada TicketsCerrados
+    $TicketsAsignados -= $TicketsCerrados;
     
-        return view('content.tickets.mistickets', ['ticket'=> $tickets]);
+    $userRoles = Auth::user()->roles->pluck('name')->toArray(); // Obtener los roles del usuario autenticado
+
+    if (in_array('admin', $userRoles)) {
+        // El administrador puede ver todos los tickets
+        $tickets = Ticket::all();
+    } elseif (in_array('agent', $userRoles)) {
+        // Los agentes solo pueden ver los tickets asignados a ellos
+        $tickets = Ticket::where('agent_asignado', Auth::user()->name)->get();
+    } else {
+        // Los usuarios solo pueden ver los tickets que han enviado
+        $tickets = Ticket::where('user_id', Auth::id())->get();
     }
+    
+    return view('content.tickets.tickets', [
+        'ticket' => $tickets,
+        'n_users' => $n_users,
+        'n_categories' => $n_categories,
+        'TicketsAbiertos' => $TicketsAbiertos,
+        'TicketsAsignados' => $TicketsAsignados,
+        'TicketsCerrados' => $TicketsCerrados,
+    ]);
+}
+
 
     public function index2() {
         $userId = Auth::id(); // Obtener el ID del usuario autenticado
@@ -45,41 +63,23 @@ class TicketsController extends Controller
     
         return view('content.tickets.mistickets', ['ticket'=> $tickets]);
     }
-
-    public function ticket_asignado()
-    {
-        $userId = Auth::id(); // Obtener el ID del usuario autenticado
-        $userRoles = Auth::user()->roles->pluck('name')->toArray(); // Obtener los roles del usuario
-
-        $ticket = Ticket::where(function ($query) use ($userId, $userRoles) {
-        $query->where('user_id', $userId)
-              ->orWhere('agent_asignado', $userId);
-
-        // Verificar si el usuario tiene el rol 'admin'
-        if (in_array('admin', $userRoles)) {
-            $query->orWhereNotNull('agent_asignado');
-        }
-    })->whereNotNull('agent_asignado') // Filtrar solo los tickets asignados
-      ->get();
-
-    return view('content.tickets.tickets_asignados', ['ticket' => $ticket]);
-    }
+    
 
     public function ticket_resueltos()
     {
-        $userId = Auth::id(); // Obtener el ID del usuario autenticado
-        $userRoles = Auth::user()->roles->pluck('name')->toArray(); // Obtener los roles del usuario
-
-        $ticket = Ticket::where(function ($query) use ($userId, $userRoles) {
-        $query->where('user_id', $userId)
-              ->orWhere('agent_asignado', $userId);
-
-        // Verificar si el usuario tiene el rol 'admin'
+        $userRoles = Auth::user()->roles->pluck('name')->toArray(); // Obtener los roles del usuario autenticado
+    
         if (in_array('admin', $userRoles)) {
-            $query->orWhereNotNull('agent_asignado');
+            // El administrador puede ver todos los tickets
+            $ticket = Ticket::all();
+        } elseif (in_array('agent', $userRoles)) {
+            // Los agentes solo pueden ver los tickets asignados a ellos
+            $ticket = Ticket::where('agent_asignado', Auth::user()->name)->get();
+        } else {
+            // Los usuarios solo pueden ver los tickets que han enviado
+            $ticket = Ticket::where('user_id', Auth::id())->get();
         }
-    })->whereNotNull('agent_asignado') // Filtrar solo los tickets asignados
-      ->get();
+    
 
         return view('content.tickets.tickets_resueltos', ['ticket' => $ticket]);
     }
@@ -92,7 +92,7 @@ class TicketsController extends Controller
      */
     public function create()
     {
-        $categories = Categories::all();
+        $categories = auth()->user()->categories;
         return view('content.tickets.tickets-create', ['categories'=> $categories]);
     }
 
@@ -104,38 +104,45 @@ class TicketsController extends Controller
      */
     public function store(Request $request)
     {
-        $messages = [
-            'cedula.numeric' => 'El campo cedula solo puede contener números.',
-            'contacto.numeric' => 'El campo contacto solo puede contener números.',
-            // Otros mensajes de error aquí
-        ];
-        $validator = $request->validate(
-            [
-                'cedula' => 'required|numeric',
-                'contacto' => 'required|numeric',
-                'category_id' => 'required',
-                'titulo' => 'required',
-                'descripcion' => 'required',
-                
-            ],$messages);
-        
-        $ticket = new Ticket();
-        $ticket -> cedula = $request-> cedula;
-        $ticket -> contacto = $request-> contacto;
-        $ticket -> category_id = $request-> category_id;
-        $ticket -> titulo = $request-> titulo;
-        $ticket -> descripcion = $request-> descripcion;
-        $ticket -> documento_1 = $request-> documento_1;
-        $ticket -> documento_2 = $request-> documento_2;
-        $ticket->user_id = Auth::id();
-        $ticket -> save();
-
+        $validator = $request->validate([
+            'category_id' => 'required',
+            'titulo' => 'required',
+            'descripcion' => 'required',
+        ]);
+    
+        // Obtener la categoría seleccionada por el usuario desde el formulario (ajusta según tu formulario)
+        $category_id = $request->input('category_id');
+    
+        // Buscar un agente con la misma categoría (asumiendo que los agentes tienen un rol 'agent')
+        $randomAgent = User::whereHas('categories', function ($query) use ($category_id) {
+            $query->where('categories.id', $category_id); // Calificar la columna 'id'
+        })->whereHas('roles', function ($query) {
+            $query->where('roles.name', 'agent'); // Calificar la columna 'name'
+        })->inRandomOrder()->first();
+    
+        // Crear un nuevo registro de ticket con los detalles proporcionados
+        $ticket = new Ticket([
+            'category_id' => $category_id,
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
+            'documento_1' => $request->documento_1,
+            'documento_2' => $request->documento_2,
+            'user_id' => Auth::id(),
+            'agent_asignado' => $randomAgent->name, // Asigna el nombre del agente
+            // otros campos del ticket
+        ]);
+    
+        // Guardar el ticket en la base de datos
+        $ticket->save();
+    
         if (Auth::user()->hasRole('user')) {
             return redirect()->route('mis.tickets');
         } elseif (Auth::user()->hasRole('admin') || Auth::user()->hasRole('agent')) {
             return redirect()->route('tickets.index');
         }
     }
+    
+    
 
     /**
      * Display the specified resource.
@@ -171,24 +178,24 @@ class TicketsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Ticket $ticket)
-{
-    $request->validate([
-        // ... (otras validaciones)
-        'agent_asignado' => 'nullable|exists:users,id',
-        
-        // ... (otras validaciones)
-    ]);
-
-    $ticket->update([
-        // ... (otros campos)
-        'agent_asignado' => $request->agent_asignado,
-        'respuesta' => $request->respuesta,
-        // ... (otros campos)
-    ]);
-
-    return redirect()->route('tickets.index', $ticket->id)
-        ->with('success', 'Ticket actualizado correctamente.');
-}
+    {
+        $request->validate([
+            // ... (otras validaciones)
+            'agent_asignado' => 'nullable|exists:users,id',
+            
+            // ... (otras validaciones)
+        ]);
+    
+        $ticket->update([
+            // ... (otros campos)
+            'respuesta' => $request->respuesta,
+            // ... (otros campos)
+        ]);
+    
+        return redirect()->route('tickets.index', $ticket->id)
+            ->with('success', 'Ticket actualizado correctamente.');
+    }
+    
 
 
     /**

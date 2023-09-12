@@ -64,21 +64,6 @@ $configData = Helper::appClasses();
     @endcan
 
     @can('tickets.index')
-    <li class="menu-item {{ Request::is('ticket_asignado') ? 'active' : '' }}">
-        <a href="{{ route('ticket_asignado') }}" class="menu-link">
-            <i class='menu-icon tf-icons bx bxs-message-alt-error'></i>
-            <div>
-                @if(Auth::user()->hasRole('admin'))
-                    Tickets Asignados
-                @elseif(Auth::user()->hasRole('agent'))
-                    Mis Tickets Asignados
-                @endif
-            </div>
-        </a>
-    </li>
-    @endcan
-
-    @can('tickets.index')
     <li class="menu-item {{ Request::is('ticket_resueltos') ? 'active' : '' }}">
         <a href="{{ route('ticket_resueltos') }}" class="menu-link">
             <i class='menu-icon tf-icons bx bxs-message-check'></i>

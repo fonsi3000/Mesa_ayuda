@@ -45,8 +45,20 @@ $configData = Helper::appClasses();
                 @endforeach
               </select>
             </div>
-            
-            <button type="submit" class="btn btn-primary">Send</button>
+            <div class="mb-3">
+              <label class="form-label">Seleccione las Categorias que le asignara a este usuario</label>
+              <div class="form-check">
+                  @foreach ($categories as $category)
+                  <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}"
+                      {{ in_array($category->id, $user->categories->pluck('id')->toArray()) ? 'checked' : '' }}>
+                  <label class="form-check-label">
+                      {{ $category->name }}
+                  </label><br>
+                  @endforeach
+              </div>
+          </div>
+      
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
           </form>
         </div>
       </div> 

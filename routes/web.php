@@ -68,8 +68,6 @@ Route::middleware([
     
     Route::get('/mis.tickets', [TicketsController::class, 'index2'])->name('mis.tickets')->middleware('can:dashboard');
 
-    Route::get('/ticket_asignado', [TicketsController::class, 'ticket_asignado'])->name('ticket_asignado');
-
     Route::get('/ticket_resueltos', [TicketsController::class, 'ticket_resueltos'])->name('ticket_resueltos');
 
     

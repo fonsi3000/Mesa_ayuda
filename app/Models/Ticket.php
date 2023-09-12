@@ -12,8 +12,6 @@ class Ticket extends Model
     // Define las columnas que se pueden asignar masivamente
     protected $fillable = [
         'user_id',
-        'cedula',
-        'contacto',
         'category_id',
         'titulo',
         'descripcion',

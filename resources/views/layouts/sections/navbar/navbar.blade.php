@@ -70,7 +70,8 @@ $containerNav = $containerNav ?? 'container-fluid';
                       John Doe
                       @endif
                     </span>
-                    <small class="text-muted">Admin</small>
+                    <small class="text-muted">{{ auth()->user()->getRoleNames()->first() }}</small>
+
                   </div>
                 </div>
               </a>
@@ -81,7 +82,7 @@ $containerNav = $containerNav ?? 'container-fluid';
             <li>
               <a class="dropdown-item" href="{{ Route::has('profile.show') ? route('profile.show') : 'javascript:void(0);' }}">
                 <i class="bx bx-user me-2"></i>
-                <span class="align-middle">My Profile</span>
+                <span class="align-middle">Mi perfil</span>
               </a>
             </li>
             @if (Auth::check() && Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -141,7 +142,7 @@ $containerNav = $containerNav ?? 'container-fluid';
             <li>
               <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class='bx bx-power-off me-2'></i>
-                <span class="align-middle">Logout</span>
+                <span class="align-middle">Cerrar session</span>
               </a>
             </li>
             <form method="POST" id="logout-form" action="{{ route('logout') }}">

@@ -21,6 +21,12 @@ class CategoriesSeeder extends Seeder
         Categories::create([
             'name' => 'hardware',
         ]);
+        Categories::create([
+            'name' => 'Bugs',
+        ]);
+        Categories::create([
+            'name' => 'PQR',
+        ]);
 
 
        // User::factory(2)->create();

@@ -12,6 +12,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\App;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -70,5 +71,10 @@ class User extends Authenticatable
                 $user->assignRole('user');
             }
         });
+    }
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Categories::class, 'category_user','user_id', 'category_id');
     }
 }

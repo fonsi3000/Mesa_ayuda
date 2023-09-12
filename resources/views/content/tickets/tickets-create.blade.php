@@ -11,28 +11,19 @@ $configData = Helper::appClasses();
 <div>
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
-          <h5 class="mb-0">Nuevo ticket</h5> 
+          <h5 class="mb-0">Envia una nuevo ticket para atender tu solicitus</h5> 
         </div>
         <div class="card-body">
           <form method="POST" action="{{ route('tickets.store') }}" enctype="multipart/form-data">
             @csrf
             
+            
             <div class="mb-3">
-              <label class="form-label" for="basic-default-fullname">Numero de Cedula de ciudadania</label>
-              <input type="int" name="cedula" required class="form-control" id="basic-default-fullname" placeholder="N° de cedula" />
-              @error('cedula')
-                  <div class="alert alert-danger">{{ $message }}</div>
-              @enderror
+              <label class="form-label" for="basic-default-fullname">Titulo</label>
+              <input type="int" name="titulo" required class="form-control" id="basic-default-fullname" placeholder="Tutulo del problema" />
             </div>
 
-            <div class="mb-3">
-                <label class="form-label" for="basic-default-fullname">Numero de telefono o Whatsapp</label>
-                <input type="int" name="contacto" required class="form-control" id="basic-default-fullname" placeholder="3108569546" />
-                @error('contacto')
-                  <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-              </div>
-            
+
               <div class="mb-3">
                 <label for="category_id" class="form-label">Categoría</label>
                 <select name="category_id" id="category_id" class="form-control" required>
@@ -42,11 +33,6 @@ $configData = Helper::appClasses();
                     @endforeach
                 </select>
             </div>
-
-            <div class="mb-3">
-                <label class="form-label" for="basic-default-fullname">Titulo</label>
-                <input type="int" name="titulo" required class="form-control" id="basic-default-fullname" placeholder="Tutulo del problema" />
-              </div>
 
               <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción del Ticket</label>

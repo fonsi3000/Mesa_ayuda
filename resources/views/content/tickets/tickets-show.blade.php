@@ -17,8 +17,6 @@ $configData = Helper::appClasses();
                     @if($ticket)
                         <div class="d-flex justify-content-between mb-3 mt-3">
                             <span><strong>Usuario:</strong> {{ $ticket->user->name }}</span>
-                            <span><strong>Cédula:</strong> {{ $ticket->cedula }}</span>
-                            <span><strong>Tel/WhatsApp:</strong> {{ $ticket->contacto }}</span>
                         </div>
                         <div class="mb-3">
                             <strong>Categoría:</strong> {{ $ticket->category->name }}
@@ -43,37 +41,22 @@ $configData = Helper::appClasses();
                             </div>
                         
                         @endif
-                        @can('admin')
-                        @if($ticket->respuesta === null)
-                        <form method="POST" action="{{ route('tickets.update', $ticket->id) }}" class="btn-group" role="group" aria-label="Basic example">
-                            @csrf
-                            @method('PATCH')
-                            <select name="agent_asignado" id="agent_asignado">
-                                <option value="">Seleccionar Usuario Asignado</option>
-                                @foreach ($users->filter(fn ($user) => $user->hasRole('agent')) as $user)
-                                    <option value="{{ $user->id }}" {{ $ticket->agent_asignado == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
-                                @endforeach
-                            </select>
-                            <button type="submit" class="btn btn-primary">Asignar Usuario</button>
-                        </form>
-                        @endif
-                        @endcan
                         
                         
                         @can('agent')
-                        @if($ticket->respuesta === null)
-                        <form method="POST" action="{{ route('tickets.update', $ticket->id) }}">
-                            @csrf
-                            @method('PATCH')
-                            <div class="mb-3">
-                                <label for="respuesta">Responder:</label>
-                                <textarea name="respuesta" id="respuesta" class="form-control" rows="4">{{ $ticket->respuesta }}</textarea>
-                            </div>
-                            <input type="hidden" name="agent_asignado" value="{{ $ticket->agent_asignado }}">
-                            <button type="submit" class="btn btn-primary">Responder</button>
-                        </form>
-                        @endif
+                            @if($ticket->respuesta === null)
+                                <form method="POST" action="{{ route('tickets.update', $ticket->id) }}">
+                                    @csrf
+                                    @method('PATCH')
+                                    <div class="mb-3">
+                                        <label for="respuesta">Responder:</label>
+                                        <textarea name="respuesta" id="respuesta" class="form-control" rows="4">{{ $ticket->respuesta }}</textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Responder</button>
+                                </form>
+                            @endif
                         @endcan
+
                         
 
                         <div class="d-flex justify-content-between">

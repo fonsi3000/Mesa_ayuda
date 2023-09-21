@@ -71,31 +71,28 @@ $customizerHidden = 'customizer-hide';
     <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-4 p-sm-5">
       <div class="w-px-400 mx-auto">
         <!-- Logo -->
-        <div class="app-brand mb-4">
-          <a href="{{url('/')}}" class="app-brand-link gap-2 mb-2">
-            <span class="app-brand-logo demo">@include('_partials.macros')</span>
-            <span class="app-brand-text demo h3 mb-0 fw-bold">{{ config('variables.templateName') }}</span>
-          </a>
+        <div class="app-brand justify-content-center mb-4">
+          <img src="https://parquesoft.com/wp-content/uploads/2020/05/PS-Sucrea.png" width="auto" height=70 alt="Imagen centrada" class="center">
         </div>
         <!-- /Logo -->
 
-        <h4 class="mb-3">Verify your email ✉️</h4>
+        <h4 class="mb-3">Verifica tu correo electrónico ✉️</h4>
 
         @if (session('status') == 'verification-link-sent')
         <div class="alert alert-success" role="alert">
           <div class="alert-body">
-            A new verification link has been sent to the email address you provided during registration.
+            Se ha enviado un nuevo enlace de verificación a la dirección de correo electrónico que proporcionó durante el registro.
           </div>
         </div>
         @endif
         <p class="text-start">
-          Account activation link sent to your email address: <strong>{{Auth::user()->email}}</strong> Please follow the link inside to continue.
+          Enlace de activación de cuenta enviado a su dirección de correo electrónico: <strong>{{Auth::user()->email}}</strong> Siga el enlace que se encuentra dentro para continuar.
         </p>
         <div class="mt-4 d-flex justify-content-between">
           <form method="POST" action="{{ route('verification.send') }}">
             @csrf
             <button type="submit" class="btn btn-label-secondary">
-              click here to request another
+              haga clic aquí para solicitar otro
             </button>
           </form>
 
@@ -103,7 +100,7 @@ $customizerHidden = 'customizer-hide';
             @csrf
 
             <button type="submit" class="btn btn-danger">
-              Log Out
+              Cerrar sesión
             </button>
           </form>
         </div>

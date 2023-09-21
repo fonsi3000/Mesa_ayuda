@@ -8,8 +8,11 @@ use App\Models\Ticket;
 use App\Models\User;
 use App\Models\Categories;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\TicketsAsignadosController;
+use App\Mail\Centro_de_asistencia;
+use App\Mail\Ticket_resuelto;
 
 class TicketsController extends Controller
 {
@@ -108,7 +111,20 @@ class TicketsController extends Controller
             'category_id' => 'required',
             'titulo' => 'required',
             'descripcion' => 'required',
+            'documento_1' => 'file|mimetypes:image/jpeg,image/png,image/gif,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document', // Validar que sea un archivo de los tipos permitidos
+            'documento_2' => 'file|mimetypes:image/jpeg,image/png,image/gif,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document',
         ]);
+
+         // Almacenamiento de archivos
+         $documento1Path = null;
+         if ($request->hasFile('documento_1')) {
+             $documento1Path = $request->file('documento_1')->store('documentos', 'public');
+         }
+ 
+         $documento2Path = null;
+         if ($request->hasFile('documento_2')) {
+             $documento2Path = $request->file('documento_2')->store('documentos', 'public');
+         }
     
         // Obtener la categoría seleccionada por el usuario desde el formulario (ajusta según tu formulario)
         $category_id = $request->input('category_id');
@@ -125,8 +141,8 @@ class TicketsController extends Controller
             'category_id' => $category_id,
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
-            'documento_1' => $request->documento_1,
-            'documento_2' => $request->documento_2,
+            'documento_1' => $documento1Path, // Ruta del archivo 1
+            'documento_2' => $documento2Path, // Ruta del archivo 2
             'user_id' => Auth::id(),
             'agent_asignado' => $randomAgent->name, // Asigna el nombre del agente
             // otros campos del ticket
@@ -134,6 +150,11 @@ class TicketsController extends Controller
     
         // Guardar el ticket en la base de datos
         $ticket->save();
+
+        $userEmail = Auth::user()->email;
+
+
+        Mail::to($userEmail)->send(new Centro_de_asistencia());
     
         if (Auth::user()->hasRole('user')) {
             return redirect()->route('mis.tickets');
@@ -191,6 +212,11 @@ class TicketsController extends Controller
             'respuesta' => $request->respuesta,
             // ... (otros campos)
         ]);
+        // Obtén la dirección de correo electrónico del usuario que creó el ticket
+        $userEmail = $ticket->user->email;
+
+        // Envía el correo al usuario que creó el ticket
+        Mail::to($userEmail)->send(new Ticket_resuelto());
     
         return redirect()->route('tickets.index', $ticket->id)
             ->with('success', 'Ticket actualizado correctamente.');

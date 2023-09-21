@@ -68,9 +68,9 @@ $customizerHidden = 'customizer-hide';
           <img src="https://parquesoft.com/wp-content/uploads/2020/05/PS-Sucrea.png" width="auto" height=70 alt="Imagen centrada" class="center">
         </div>
         <!-- /Logo -->
-        <h4 class="mb-3">Confirm Password</h4>
-        <p class="text-start mb-4">Please confirm your password before continuing.</p>
-        <p class="mb-0 fw-semibold">Type your 6 digit security code</p>
+        <h4 class="mb-3">confirmar Contraseña</h4>
+        <p class="text-start mb-4">Confirme su contraseña antes de continuar.</p>
+        <p class="mb-0 fw-semibold">Escribe tu código de seguridad de 6 dígitos</p>
         <form id="twoStepsForm" action="{{ route('password.confirm') }}" method="POST">
           @csrf
           <div class="mb-3 form-password-toggle">
@@ -89,7 +89,7 @@ $customizerHidden = 'customizer-hide';
           </div>
 
           <button type="submit" class="btn btn-primary d-grid w-100 mb-3">
-            Confirm Password
+            confirmar Contraseña
           </button>
         </form>
 

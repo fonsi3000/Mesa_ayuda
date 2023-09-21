@@ -82,8 +82,8 @@ $customizerHidden = 'customizer-hide';
 
         <br>
 
-          <h4 class="mb-2">Bienvenido. 👋</h4>
-          <p class="mb-4">Inicia sesión en tu cuenta y comienza la aventura.
+          <h4 class="mb-2">Bienvenido a tu centro de asistencia Parquesoft-sucre. 👋</h4>
+          <p class="mb-4">Inicia sesión en tu cuenta para resolver tus necesidades.
 
           @if (session('status'))
           <div class="alert alert-success mb-1 rounded-0" role="alert">

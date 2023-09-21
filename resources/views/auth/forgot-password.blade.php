@@ -64,8 +64,8 @@ $customizerHidden = 'customizer-hide';
           <img src="https://parquesoft.com/wp-content/uploads/2020/05/PS-Sucrea.png" width="auto" height=70 alt="Imagen centrada" class="center">
         </div>
         <!-- /Logo -->
-        <h4 class="mb-2">Forgot Password? 🔒</h4>
-        <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
+        <h4 class="mb-2">¿Has olvidado tu contraseña? 🔒</h4>
+        <p class="mb-4">Ingresa tu correo electrónico y te enviaremos instrucciones para restablecer tu contraseña</p>
 
         @if (session('status'))
         <div class="mb-1 text-success">
@@ -76,7 +76,7 @@ $customizerHidden = 'customizer-hide';
         <form id="formAuthentication" class="mb-3" action="{{ route('password.email') }}" method="POST">
           @csrf
           <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
+            <label for="email" class="form-label">Correo electrónico</label>
             <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="john@example.com" autofocus>
             @error('email')
             <span class="invalid-feedback" role="alert">
@@ -84,13 +84,13 @@ $customizerHidden = 'customizer-hide';
             </span>
             @enderror
           </div>
-          <button type="submit" class="btn btn-primary d-grid w-100">Send Reset Link</button>
+          <button type="submit" class="btn btn-primary d-grid w-100">Enviar enlace de reinicio</button>
         </form>
         <div class="text-center">
           @if (Route::has('login'))
           <a href="{{ route('login') }}" class="d-flex align-items-center justify-content-center">
             <i class="bx bx-chevron-left scaleX-n1-rtl"></i>
-            Back to login
+            Atrás para iniciar sesión
           </a>
           @endif
         </div>

@@ -58,13 +58,15 @@ $customizerHidden = 'customizer-hide';
     <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5 p-4">
 
       <!-- Register Card -->
-<div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5 p-4">
-  <div class="w-px-400 mx-auto">
-    <!-- Logo -->
-    <div class="app-brand mb-4">
-      <img src="https://parquesoft.com/wp-content/uploads/2020/05/PS-Sucrea.png" width="auto" height=70 alt="Imagen centrada" class="center">
-    </div>
-    <!-- /Logo -->
+      <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5 p-4">
+
+        <!-- Forgot Password -->
+    <div class="w-px-400 mx-auto">
+      <!-- Logo -->
+      <div class="app-brand justify-content-center mb-4">
+        <img src="https://parquesoft.com/wp-content/uploads/2020/05/PS-Sucrea.png" width="auto" height=70 alt="Imagen centrada" class="center">
+      </div>
+      <!-- /Logo -->
 
     <!-- Register Card -->
     <h4 class="mb-2">Crea una cuenta 🚀</h4>

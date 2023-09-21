@@ -71,21 +71,18 @@ $customizerHidden = 'customizer-hide';
     <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-4 p-sm-5">
       <div class="w-px-400 mx-auto">
         <!-- Logo -->
-        <div class="app-brand justify-content-center mb-5">
-          <a href="{{url('/')}}" class="app-brand-link gap-2 mb-2">
-            <span class="app-brand-logo demo">@include('_partials.macros')</span>
-            <span class="app-brand-text demo h3 mb-0 fw-bold">{{ config('variables.templateName') }}</span>
-          </a>
+        <div class="app-brand justify-content-center mb-4">
+          <img src="https://parquesoft.com/wp-content/uploads/2020/05/PS-Sucrea.png" width="auto" height=70 alt="Imagen centrada" class="center">
         </div>
         <!-- /Logo -->
-        <h4 class="mb-3">Two Step Verification 💬</h4>
+        <h4 class="mb-3">Verificación en dos pasos 💬</h4>
         <div x-data="{ recovery: false }">
           <div class="mb-3" x-show="! recovery">
-            Please confirm access to your account by entering the authentication code provided by your authenticator application.
+            Confirme el acceso a su cuenta ingresando el código de autenticación proporcionado por su aplicación de autenticación.
           </div>
 
           <div class="mb-3" x-show="recovery">
-            Please confirm access to your account by entering one of your emergency recovery codes.
+            Confirme el acceso a su cuenta ingresando uno de sus códigos de recuperación de emergencia.
           </div>
 
           <x-jet-validation-errors class="mb-1" />
@@ -110,7 +107,7 @@ $customizerHidden = 'customizer-hide';
               </button>
 
               <button type="button" class="btn btn-outline-secondary me-1" x-show="recovery" x-on:click=" recovery = false; $nextTick(() => { $refs.code.focus() })">
-                Use an authentication code
+                Utilice un código de autenticación
               </button>
 
               <x-jet-button>
